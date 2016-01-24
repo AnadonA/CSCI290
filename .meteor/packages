@@ -22,3 +22,5 @@ mizzao:bootstrap-3
 percolate:synced-cron
 fortawesome:fontawesome
 aldeed:autoform
+accounts-ui
+iron:router
