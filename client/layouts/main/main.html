@@ -1,17 +1,14 @@
 <template name="mainLayout">
 
-	<header>
-		{{ > yield region="heading" }}
-		in the heading...
-	</header>
-
-
-
-	<footer>
-		{{ > yield region="footing" }}
-		in the footer...
-	</footer>
+	{{ #unless currentUser }}
+		<input class="btn btn-sm btn-primary" id="showLoginDialog" data-target="#_loginDialog" data-toggle="modal" value="Log-In">
+	{{ else }}
+		{{ username }}
+		<br>
+		<input class="btn btn-sm btn-primary" id="logout" value="Log-Out">
+	{{ /unless }}
 
 	{{ > _loginModal }}
+	{{ > _registerModal }}
 
 </template>
