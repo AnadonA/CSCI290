@@ -14,10 +14,16 @@ Template._loginModal.events({
 
 		Meteor.loginWithPassword(emailText, passwordText, function(arg){
 			if (arg == undefined){
+
+				toastr.success(Meteor.user().emails[0].address + " has successfully logged in.", "User Logged In");
+
 				$("#_loginDialog").modal("hide");
 				$("#loginEmail").val("");
 				$("#loginPassword").val("");
 			}
-		});;
+			else{
+				toastr.error(arg.reason, "User Login Failed");
+			}
+		});
 	}
 });

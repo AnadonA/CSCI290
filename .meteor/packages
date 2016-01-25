@@ -26,3 +26,4 @@ accounts-ui
 iron:router
 accounts-oauth
 accounts-password
+chrismbeckett:toastr
