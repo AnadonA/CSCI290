@@ -1,14 +1,52 @@
-<template name="mainLayout">
 
-	{{ #unless currentUser }}
-		<input class="btn btn-sm btn-primary" id="showLoginDialog" data-target="#_loginDialog" data-toggle="modal" value="Log-In">
-	{{ else }}
-		{{ username }}
-		<br>
-		<input class="btn btn-sm btn-primary" id="logout" value="Log-Out">
-	{{ /unless }}
+<head>
+<title>CSCI290 Final Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-	{{ > _loginModal }}
-	{{ > _registerModal }}
+<style>
 
-</template>
+    .row.content {height: 1500px}
+    
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+</style>
+</head>
+<body>
+
+
+<div class="container-fluid">
+<div class="well">
+<h1 align="center">Test Title</h1>
+<p align="center">Here is where text will go!</p>
+</div>
+
+<div class="container-fluid">
+<div class="row content">
+<div class="col-sm-2 sidenav">
+<h3>Menu</h3>
+<ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="#">Home</a></li>
+<li><a href="#">Forum</a></li>
+<li><a href="#">Support</a></li>
+<li><a href="#">About</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+</body>

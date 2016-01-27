@@ -1,0 +1,3 @@
+Template._editUserModal.events({
+	
+});
