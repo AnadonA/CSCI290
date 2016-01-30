@@ -1,0 +1,3 @@
+Template._registerModal.helpers({
+
+});

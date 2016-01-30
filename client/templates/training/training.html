@@ -1,0 +1,11 @@
+<template name="training">
+
+	{{ #if userLoggedIn }}
+
+	{{ else }}
+		<!-- The current user is NOT logged in. Do not let them see any of the 
+		privileged data. Inform them of the issue. -->
+		{{ > noViewForYou }}
+	{{ /if }}
+
+</template>

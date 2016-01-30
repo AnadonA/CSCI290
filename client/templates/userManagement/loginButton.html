@@ -1,4 +1,4 @@
-<template name="mainLayout">
+<template name="loginButton">
 
 	<!-- If there is no user logged in, then present the user with the log-in 
 		button. Otherwise, present the user with the welcome text and a Log-out
@@ -16,13 +16,5 @@
 			Log Out
 		</a>
 	{{ /unless }}
-
-	<!-- Include the user log-in dialog -->
-	{{ > _loginModal }}
-
-	<!-- Include the user registration dialog -->
-	{{ > _registerModal }}
-
-	{{ > _editUserModal }}
 
 </template>

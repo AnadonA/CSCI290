@@ -27,3 +27,7 @@ iron:router
 accounts-oauth
 accounts-password
 chrismbeckett:toastr
+highcharts:highcharts-meteor
+
+
+highcharts-container
