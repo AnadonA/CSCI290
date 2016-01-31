@@ -1,16 +1,18 @@
 Template._editUserModal.helpers({
 
 	"userExists": 			function(){
-		if (Meteor.userId())
-			return (Meteor.user() != undefined);
+		if (Meteor.user() != undefined)
+			return true;
+
+		return false;
 	},
 	"userEmail": 			function(){
-		if (Meteor.userId())
+		if (Meteor.user() != undefined)
 			return Meteor.user().emails[0].address;
 	},
 
 	"userName": 			function(){
-		if (Meteor.userId())
+		if (Meteor.user() != undefined)
 			return Meteor.user().username;
 	}
 });

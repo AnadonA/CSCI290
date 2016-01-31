@@ -1,12 +1,10 @@
 <template name="mainLayout">
+
+{{ afterLoad }}
+
 <style>
-
-.fixed
-{
-
-position: fixed;
-
-
+.colorb {
+background-color:#006ab3;
 }
 
 </style>
@@ -19,9 +17,40 @@ position: fixed;
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<h3>Menu</h3>
-				<ul class="nav nav-pills nav-stacked">
-					<li class="{{ isActivePath 'home' }}"><a href="{{ pathFor 'home' }}">Home</a></li>
-					<li class="{{ isActivePath 'training' }}"><a href="{{ pathFor 'training' }}">Training</a></li>
+
+				<ul class="nav nav-pill nav-stacked">
+					<li class="{{ isActivePath '' }}">
+						<a href="{{ pathFor 'home' }}">
+							<span>
+								<i class="fa fa-home"></i>
+								<label>Home</label>
+							</span>
+						</a>
+					</li>
+					<li class="tree-toggle">
+						<a href="">
+							<i class="fa fa-tachometer"></i>
+							<label>Training</label>
+						</a>
+
+						<ul class="nav nav-list tree" id="trainingTree">
+
+							<li class="{{ isActivePath 'training' }}" style="margin-left: 015px">
+								<a href="{{ pathFor 'training' }}">
+									<i class="fa fa-angle-right"></i>
+									My Training
+								</a>
+							</li>
+
+							<li style="margin-left: 015px">
+								<a href="">
+									<i class="fa fa-angle-right"></i>
+									My Employees
+								</a>
+							</li>
+
+						</ul>
+					</li>
 					<li><a href="#">Forum</a></li>
 					<li><a href="#">Support</a></li>
 				</ul>
@@ -36,7 +65,13 @@ position: fixed;
 
 		</div>
 	</div>
-
+<div class="navbar navbar-inverse navbar-fixed-bottom colorb" role="navigation">
+	<div class="container">
+		<div class="navbar-text pull-left">
+			Copyright &copy; 2015 D & A.
+		</div>
+	</div>
+</div>
 	<!-- Include each of the primary login and registration forms. They are 
 		included in the mainLayout file to ensure that they are available 
 		regardless of where the user enters the application. -->

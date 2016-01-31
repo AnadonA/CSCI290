@@ -1,5 +1,5 @@
 Template._registerModal.events({
-	"submit form": 		function(event){
+	"submit form": 		function(event, template){
 		event.preventDefault();
 
 		var emailText 		= event.target.registerEmail.value;
@@ -18,9 +18,7 @@ Template._registerModal.events({
 
 				$("#_registerDialog").modal("hide");
 
-				$("#registerEmail").val("");
-				$("#registerUsername").val("");
-				$("#registerPassword").val("");
+				template.find("form").reset();
 			}
 		});
 

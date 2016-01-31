@@ -7,6 +7,10 @@
 	height: 100%;
 }
 
+.tree {
+	display:			none;
+}
+
 footer {
 	background-color: #555;
 	color: white;
