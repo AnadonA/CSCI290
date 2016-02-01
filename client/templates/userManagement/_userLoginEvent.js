@@ -17,16 +17,17 @@ Template._loginModal.events({
 
 				toastr.success(Meteor.user().emails[0].address + " has successfully logged in.", "User Logged In");
 
-				//	Clear the form of all entries and hide it
-				template.find("form").reset();
+				//	Hide the log-in dialog
 				$("#_loginDialog").modal("hide");
 			}
 			else{
-				//	Clear the form of all entries and alert the user of the failed
-				//	attempt a logging-in.
-				template.find("form").reset();
+				//	Alert the user of the failed log-in attempt
 				toastr.error(arg.reason, "User Login Failed");
 			}
+
 		});
+
+		//	Clear the form of all entries
+		template.find("form").reset();
 	}
 });

@@ -8,3 +8,10 @@
 ServerConnected	= function(){
 	return (Meteor.status().status == "connected");
 }
+
+UserIsAdmin		= function(application, userID){
+	adminCollection.find({application: application}).map(
+		function(document){
+			console.log(document._ID);
+	});
+}

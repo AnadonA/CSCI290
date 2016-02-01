@@ -27,13 +27,46 @@ background-color:#006ab3;
 							</span>
 						</a>
 					</li>
-					<li class="tree-toggle">
+
+					<li class="tree-toggle-comm">
+						<a href="">
+							<i class="fa fa-weixin"></i>
+							<label>Communication</label>
+						</a>
+
+						<ul class="nav nav-list tree" id="communictationTree">
+							<li style="margin-left: 015px">
+								<a href="">
+									<i class="fa fa-angle-right"></i>
+									Option 01
+								</a>
+							</li>
+
+							<li style="margin-left: 015px">
+								<a href="">
+									<i class="fa fa-angle-right"></i>
+									Option 02
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="tree-toggle-train">
 						<a href="">
 							<i class="fa fa-tachometer"></i>
 							<label>Training</label>
 						</a>
 
 						<ul class="nav nav-list tree" id="trainingTree">
+
+							{{ #if isAdmin 'training' }}
+							<li style="margin-left: 015px">
+								<a href="">
+									<i class="fa fa-angle-right"></i>
+									Administration
+								</a>
+							</li>
+							{{ /if }}
 
 							<li class="{{ isActivePath 'training' }}" style="margin-left: 015px">
 								<a href="{{ pathFor 'training' }}">
@@ -53,6 +86,7 @@ background-color:#006ab3;
 					</li>
 					<li><a href="#">Forum</a></li>
 					<li><a href="#">Support</a></li>
+					<li><a href="#">Admin</a></li>
 				</ul>
 				<br>
 

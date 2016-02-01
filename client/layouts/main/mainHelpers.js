@@ -30,8 +30,20 @@ Template.mainLayout.helpers({
 		//Paths DO NOT match
 		return "inactive";
 	},
+
+	"isAdmin": 				function(application){
+		var userID	= Meteor.userId();
+		var appDoc	= adminCollection.find({application: application}).fetch()[0];
+
+		if (appDoc){
+			
+			var admins 	= appDoc.administrators;
+
+			for (i = 0; i < admins.length; i++)
+				if (admins[i] == userID)
+					return true;
+		}
+
+		return false;
+	}
 });
-
-Template.mainLayout.rendered	= function(){
-
-}
