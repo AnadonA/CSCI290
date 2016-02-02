@@ -60,16 +60,16 @@ background-color:#006ab3;
 						<ul class="nav nav-list tree" id="trainingTree">
 
 							{{ #if isAdmin 'training' }}
-							<li style="margin-left: 015px">
-								<a href="">
+							<li class="{{ isActivePath 'Training Admin' }}" style="margin-left: 015px">
+								<a href="{{ pathFor 'Training Admin' }}">
 									<i class="fa fa-angle-right"></i>
 									Administration
 								</a>
 							</li>
 							{{ /if }}
 
-							<li class="{{ isActivePath 'training' }}" style="margin-left: 015px">
-								<a href="{{ pathFor 'training' }}">
+							<li class="{{ isActivePath 'User Training' }}" style="margin-left: 015px">
+								<a href="{{ pathFor 'User Training' }}user/{{ userID }}">
 									<i class="fa fa-angle-right"></i>
 									My Training
 								</a>
@@ -84,9 +84,6 @@ background-color:#006ab3;
 
 						</ul>
 					</li>
-					<li><a href="#">Forum</a></li>
-					<li><a href="#">Support</a></li>
-					<li><a href="#">Admin</a></li>
 				</ul>
 				<br>
 

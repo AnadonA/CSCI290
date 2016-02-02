@@ -1,5 +1,8 @@
 Template.mainLayout.helpers({
 
+	/*	------------------------------------------------------------------------
+		DESC: Resets the toggle state of the menu tree toggles.
+		------------------------------------------------------------------------	*/
 	"afterLoad": 			function(){
 		var toggleState		= $(".tree").is("visible");
 
@@ -18,7 +21,7 @@ Template.mainLayout.helpers({
 		------------------------------------------------------------------------	*/
 	"isActivePath": 		function(path){
 		//Retrieve the active path value from the current Session
-		var activePath 	= Router.current().route.path(this).replace("/", "");
+		var activePath 	= Session.get("activePath");
 
 		//Test for path match
 		if (activePath == path){
@@ -31,6 +34,13 @@ Template.mainLayout.helpers({
 		return "inactive";
 	},
 
+	/*	------------------------------------------------------------------------
+		DESC: Tests the currently logged in users ID (if one is logged in) against
+		the administrative array. Returns true - the user is an administrator - 
+		if their ID exists in the retrieved array.
+		OUT : 	true 	(if the userID is located in the administrators collection)
+				false 	(otherwise)
+		------------------------------------------------------------------------	*/
 	"isAdmin": 				function(application){
 		var userID	= Meteor.userId();
 		var appDoc	= adminCollection.find({application: application}).fetch()[0];
@@ -45,5 +55,15 @@ Template.mainLayout.helpers({
 		}
 
 		return false;
+	},
+
+	/*	------------------------------------------------------------------------
+		DESC: Retrieves the UserID of the currently logged in user (if one is 
+		actually logged in).
+		OUT : 	The ID of the currently logged in user.
+			: 	undefined otherwise.
+		------------------------------------------------------------------------	*/
+	"userID": 				function(){
+		return Meteor.userId();
 	}
 });
