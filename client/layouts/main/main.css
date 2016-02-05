@@ -1,19 +1,52 @@
 .row.content {
 	height: 1500px
 }
-    
+ 
+.well {
+	top-padding:		005px;
+	bottom-padding:		005px;
+
+	position:			fixed;
+	top:				002px;
+	left:				002px;
+	right:				002px;
+
+	z-index:			99999;
+}
+
+.well h3 {
+	top-padding:		005px;
+	bottom-padding:		005px;
+}
+
 .sidenav {
 	background-color: 	#f1f1f1;
-	height: 			100%;
-	width: 				225px;
+
+	width: 				200px;
+
+	position: 			fixed;
+	bottom:				000px;
+	left:				000px;
+	top:				000px;
+
+	padding-top:		100px;
 }
 
 .tree {
 	display:			none;
 }
 
+.body-content {
+	margin-top:			100px;
+	margin-left:		205px;
+}
+
 footer {
 	background-color: 	#555;
 	color: 				white;
 	padding: 			015px;
+}
+
+.modal {
+	padding-top:		070px;
 }

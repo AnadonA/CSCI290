@@ -1,0 +1,23 @@
+<template name="showTrainingPackages">
+
+{{ #each packages }}
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			{{ name }}
+		</div>
+
+		<div class="panel-body">
+			{{ description }}
+			<br>
+			<hr>
+			<h4>Package Requirements</h4>
+			<ul>
+			{{ #each requirements }}
+				<li> {{ packageRequirement }}</li>
+			{{ /each }}
+			</ul>
+		</div>
+	</div>
+{{ /each }}
+
+</template>

@@ -15,3 +15,7 @@ UserIsAdmin		= function(application, userID){
 			console.log(document._ID);
 	});
 }
+
+Handlebars.registerHelper('serverStatus', function(){
+	return (Meteor.status().status == "connected");
+});
