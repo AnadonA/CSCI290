@@ -27,7 +27,6 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-6">
 
 		{{ #if showPackages }}
 
@@ -35,28 +34,9 @@
 
 		{{ else }}
 
-			{{ #each requirements }}
-			<div class="col-sm-12">
-		
-			<div class="panel-group" id="accordion">
-
-				<div class="panel panel-default">
-					<div class="panel-heading" data-parent="#accordion" data-target="#{{ _id }}" data-toggle="collapse">
-						{{ name }}
-					</div>
-
-					<div class="panel-body panel-collapse collapse" id="{{ _id }}">
-						{{ description }}
-					</div>
-				</div>
-
-			</div>
-
-			</div>
-			{{ /each }}
+			{{ > showTrainingRequirements }}
 
 		{{ /if }}
-	</div>
 </div>
 
 {{ > _createTrainingRequirement }}

@@ -1,0 +1,13 @@
+.requirementPanel{
+	cursor: 			pointer;
+}
+
+.tag-badge{
+	padding:			010px;
+	padding-left:		010px;
+	padding-right:		010px;
+}
+
+.remove-tag{
+	cursor:				pointer;
+}
