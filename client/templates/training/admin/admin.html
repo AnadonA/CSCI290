@@ -1,0 +1,46 @@
+<template name="trainingAdmin">
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="navbar navbar-default training-navbar">
+			<div class="btn-group pull-left">
+				<button class="btn {{ buttonState 'Requirements' }} taSelection">
+					Requirements
+				</button>
+				<button class="btn {{ buttonState 'Packages' }} taSelection">
+					Packages
+				</button>
+			</div>
+
+			<!--	Include a create button that will change based on the 
+			selected Training Administrators role (requirements or packages).	-->
+			<div class="btn-group pull-right">
+				{{ #if showPackages }}
+				<button class="btn btn-default createPackage">
+					Create Package
+				</button>
+				{{ else }}
+				<button class="btn btn-default createRequirement" data-target="#_createTrainingRequirementDialog" data-toggle="modal">
+					Create Requirement
+				</button>
+				{{ /if }}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+
+		{{ #if showPackages }}
+
+			{{ > showTrainingPackages }}
+
+		{{ else }}
+
+			{{ > showTrainingRequirements }}
+
+		{{ /if }}
+</div>
+
+{{ > _createTrainingRequirement }}
+
+</template>

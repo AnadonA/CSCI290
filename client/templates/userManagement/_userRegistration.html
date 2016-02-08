@@ -1,0 +1,40 @@
+<template name="_registerModal">
+
+	<div id="_registerDialog" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+
+			<div class="modal-content alert-primary">
+				<div class="modal-header ">
+					<button class="close pull-right" data-target="#_registerDialog" type="button"  data-toggle="modal" >&times;</button>
+					<center>
+						<h3 class="modal-title"> User Registration </h3>
+					</center>
+				</div>
+
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="registerEmail">Email:</label>
+							<input class="form-control" id="registerEmail" required type="email">
+						</div>
+						<div class="form-group">
+							<label for="registerUsername">Username:</label>
+							<input class="form-control" id="registerUsername" required type="username">
+						</div>
+						<div class="form-group">
+							<label for="registerPassword">Password:</label>
+							<input class="form-control" id="registerPassword" required type="password">
+						</div>
+						<center>
+							<input class="btn btn-sm btn-block btn-primary" id="registerSubmit" type="submit" value="register">
+							<br>
+							<input class="btn btn-sm btn-block btn-warning" data-target="#_registerDialog" data-toggle="modal" id="registerRegister" value="Cancel">
+						</center>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</template>

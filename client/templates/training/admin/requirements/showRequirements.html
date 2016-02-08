@@ -1,0 +1,105 @@
+<template name="showTrainingRequirements">
+
+<!-- Training Requirement list -->
+<div class="col-sm-6">
+	{{ #each trainingRequirements }}
+		<div class="panel-group">
+			<div class="panel panel-{{ selectedRequirementState _id }} requirementPanel">
+				<div class="panel-heading">
+					{{ name }}
+				</div>
+			</div>
+		</div>
+	{{ /each }}
+</div>
+
+<!-- Selected Training Requirement -->
+<div class="col-sm-6">
+
+	{{ #if selectedRequirement }}
+
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Training Requirement Details
+				</div>
+
+				<form>
+	
+					<div class="panel-body">
+
+						<div class="form-group">
+							<label for="requirementName">Name:</label>
+							<input class="form-control" id="requirementName" type="text" value="{{ selectedRequirement.name }}">
+						</div>
+
+						<hr>
+
+						<div class="form-group">
+							<label for="requirementDescription">Description:</label>
+							<textarea class="form-control" id="requirementDescription">{{ selectedRequirement.description }}</textarea>
+						</div>
+
+						<hr>
+
+						<div class="form-group">
+							<label for="requirementMinScore">Minimum Score:</label>
+							<input class="form-control" id="requirementMinScore" step="any" type="number" value="{{ selectedRequirement.minimumScore }}">
+						</div>
+
+						<hr>
+
+						<div class="form-group">
+							<label for="requirementQty">Required Quantity:</label>
+							<input class="form-control" id="requirementQty" type="number" value="{{ selectedRequirement.requiredQty }}">
+						</div>
+
+						<hr>
+
+						<div class="form-group">
+							<label>Keywords:</label>
+
+							<br>
+
+							{{ #each selectedRequirement.tags }}
+							<div class="badge tag-badge" id="{{ text }}" value="{{ text }}">
+								{{ text }}
+								<i class="fa fa-minus-square-o remove-tag" value="{{ text }}"></i>
+							</div>
+							{{ /each }}
+
+							<br>
+							<br>
+
+							<input class="form-control" id="requirementTags" placeholder="New Tags" type="text" >
+						</div>
+
+						<hr>
+
+						<div class="form-group">
+						</div>
+					</div>
+
+					<div class="panel-footer">
+						<center>
+							<div class="btn-group">
+								<button class="btn btn-success trSave" type="submit">
+									<i class="fa fa-thumbs-o-up"></i>
+									Save Changes
+								</button>
+								<button class="btn btn-danger trDelete" type="button">
+									Delete Requirement
+									<i class="fa fa-thumbs-o-down"></i>
+								</button>
+							</div>
+						</center>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+	{{ /if }}
+
+</div>
+</template>

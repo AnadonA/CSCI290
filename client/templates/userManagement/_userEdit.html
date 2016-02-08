@@ -1,0 +1,35 @@
+<template name="_editUserModal">
+
+	<div id="_editUserDialog" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+
+			<div class="modal-content alert-primary">
+				<div class="modal-header ">
+					<button class="close pull-right" data-target="#_editUserDialog" type="button"  data-toggle="modal" >&times;</button>
+					<center>
+						<h3 class="modal-title"> User Log-In </h3>
+					</center>
+				</div>
+
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="editUserEmail">Email:</label>
+							<input class="form-control" id="editUserEmail" type="email" value="{{ userEmail }}">
+						</div>
+						<div class="form-group">
+							<label for="editUserName">User Name:</label>
+							<input class="form-control" id="editUserName" type="text" value="{{ userName }}" >
+						</div>
+						<center>
+							<input class="btn btn-sm btn-block btn-primary" id="editUserSubmit" type="submit" value="Submit Changes">
+						</center>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</template>

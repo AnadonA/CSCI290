@@ -1,0 +1,50 @@
+<template name="_createTrainingRequirement">
+
+	<div id="_createTrainingRequirementDialog" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-md">
+
+			<div class="modal-content alert-primary">
+				<div class="modal-header ">
+					<button class="close pull-right" data-target="#_createTrainingRequirementDialog" type="button"  data-toggle="modal" >&times;</button>
+					<center>
+						<h3 class="modal-title"> Create Training Requirement </h3>
+					</center>
+				</div>
+
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="registerEmail">Name:</label>
+							<input class="form-control" id="requirementName" placeholder="Requirement Name" required type="text">
+						</div>
+						<div class="form-group">
+							<label for="registerUsername">Description:</label>
+							<textarea class="form-control" id="requirementDescription" placeholder="Requirement Description" required ></textarea>
+						</div>
+						<div class="form-group">
+							<label for="requirementMinimumScore">Minimum Score:</label>
+							<input class="form-control" default=".90" id="requirementMinimumScore" placeholder=".90" required step="any" type="number">
+						</div>
+						<div class="form-group">
+							<label for="requirementQuantity">Required Quantity</label>
+							<input class="form-control" default="1" id="requirementQuantity" placeholder="1" required type="number"> 
+						</div>
+						<div class="form-group">
+							<label for="requirementPrerequisites">Prerequisites</label>
+							<input class="form-control" id="requirementPrerequisites" placeholder="not ready yet..." type="text">
+						</div>
+						<div class="form-group">
+							<label for="requirementTags">Keywords:</label>
+							<input class="form-control" id="requirementTags" placeholder="Kewords Separated by ;" type="text">
+						</div>
+						<center>
+							<input class="btn btn-sm btn-block btn-primary" type="submit" value="Create">
+						</center>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</template>

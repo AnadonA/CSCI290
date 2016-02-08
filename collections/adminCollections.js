@@ -1,0 +1,1 @@
+adminCollection			= new Mongo.Collection("administrators");

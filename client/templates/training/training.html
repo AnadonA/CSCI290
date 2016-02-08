@@ -1,0 +1,20 @@
+<template name="training">
+
+	{{ #if userLoggedIn }}
+		<!-- This is where the training content will be housed. It has been 
+		coded into this IF statement to ensure that only personnel who have 
+		successfully logged in can view it. -->
+		... Training Items Go Here ...
+
+		<br>
+
+		<div id="chart">
+			{{ createChart }}
+		</div>
+	{{ else }}
+		<!-- The current user is NOT logged in. Do not let them see any of the 
+		privileged data. Inform them of the issue. -->
+		{{ > noViewForYou }}
+	{{ /if }}
+
+</template>

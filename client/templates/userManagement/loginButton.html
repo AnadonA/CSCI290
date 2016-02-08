@@ -1,0 +1,20 @@
+<template name="loginButton">
+
+	<!-- If there is no user logged in, then present the user with the log-in 
+		button. Otherwise, present the user with the welcome text and a Log-out
+		button. -->
+	{{ #unless currentUser }}
+		<a href="#" class="btn btn-sm btn-default" id="showLoginDialog" data-target="#_loginDialog" data-toggle="modal">
+			<i class="fa fa-gear {{ serverStatus }}"></i>
+			Log In
+		</a>
+	{{ else }}
+		Welcome, <a href="#" data-target="#_editUserDialog" data-toggle="modal">{{ username }}!</a>
+		<br>
+		<a href="#" class="btn btn-sm btn-default" id="logout">
+			<i class="fa fa-gear {{ serverStatus }}"></i>
+			Log Out
+		</a>
+	{{ /unless }}
+
+</template>
