@@ -105,7 +105,7 @@ InsertTags 		= function(pTagArray, pTagText){
 	//	using ';'. 
 	for (i = 0; i < tags01.length; i++){
 
-		//	Trim the current
+		//	Trim the current tag 
 		tags01[i] 	= tags01[i].trim();
 
 		var tags02	= tags01[i].split(";");

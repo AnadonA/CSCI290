@@ -4,6 +4,9 @@
 	<div class="col-sm-12">
 		<div class="navbar navbar-default training-navbar">
 			<div class="btn-group pull-left">
+				<button class="btn {{ buttonState 'Courses' }} taSelection">
+					Courses
+				</button>
 				<button class="btn {{ buttonState 'Requirements' }} taSelection">
 					Requirements
 				</button>
@@ -15,13 +18,19 @@
 			<!--	Include a create button that will change based on the 
 			selected Training Administrators role (requirements or packages).	-->
 			<div class="btn-group pull-right">
-				{{ #if showPackages }}
+				{{ #if showPackages 'Packages' }}
 				<button class="btn btn-default createPackage">
 					Create Package
 				</button>
-				{{ else }}
+				{{ /if }}
+				{{ #if showPackages 'Requirements' }}
 				<button class="btn btn-default createRequirement" data-target="#_createTrainingRequirementDialog" data-toggle="modal">
 					Create Requirement
+				</button>
+				{{ /if }}
+				{{ #if showPackages 'Courses' }}
+				<button class="btn btn-default createCourse" data-target="#_createTrainingCourseDialog" data-toggle="modal">
+					Create Course
 				</button>
 				{{ /if }}
 			</div>
@@ -30,17 +39,26 @@
 </div>
 <div class="row">
 
-		{{ #if showPackages }}
+		{{ #if showPackages 'Packages' }}
 
 			{{ > showTrainingPackages }}
 
-		{{ else }}
+		{{ /if }}
+
+		{{ #if showPackages 'Requirements' }}
 
 			{{ > showTrainingRequirements }}
 
 		{{ /if }}
+
+		{{ #if showPackages 'Courses' }}
+
+			{{ > showTrainingCourses }}
+
+		{{ /if }}
 </div>
 
+{{ > _createTrainingCourse }}
 {{ > _createTrainingRequirement }}
 
 </template>

@@ -1,6 +1,6 @@
 Template.showTrainingRequirements.helpers({
 	trainingRequirements: 			function(){
-		return trainingRequirementCollection.find();
+		return trainingRequirements.find();
 	},
 
 	selectedRequirementState: 			function(requirementID){
@@ -12,6 +12,6 @@ Template.showTrainingRequirements.helpers({
 	},
 
 	selectedRequirement: 		function(){
-		return trainingRequirementCollection.findOne({_id: Session.get("selectedTrainingRequirement")});
+		return trainingRequirements.findOne({_id: Session.get("selectedTrainingRequirement")});
 	}
 });

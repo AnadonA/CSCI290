@@ -7,8 +7,6 @@ Template.mainLayout.helpers({
 		var toggleState		= $(".tree").is("visible");
 
 		$(".tree").toggle(300);
-
-		console.log(toggleState);
 	},
 
 	/*	------------------------------------------------------------------------

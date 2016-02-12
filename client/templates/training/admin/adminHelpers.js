@@ -33,7 +33,9 @@ Template.trainingAdmin.helpers({
 		true if the focus is on 'Packages'. If the focus is elsewhere, it returns
 		false.
 		------------------------------------------------------------------------	*/
-	showPackages: 			function(){
-		return (Session.get(taSelection).indexOf("Packages") >= 0);
+	showPackages: 			function(pButtonName){
+		var selection 	= Session.get(taSelection);
+
+		return (selection.indexOf(pButtonName) >= 0);
 	}
 });
