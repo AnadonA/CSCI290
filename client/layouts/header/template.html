@@ -1,0 +1,21 @@
+<template name="navbar">
+
+	<div class="navbar navbar-fixed-top navbar-default" role="navigation">
+		<div class="navbar-sidebar pull-left">
+			<h2 class="{{ connectionState }}"> CSCI290 </h2>
+		</div>
+
+		<div class="container">
+			<div class="navbar-content">
+				<div class="col-sm-6 navbar-left pull-left">
+					{{ > yield region="navbarLeft" }}
+				</div>
+
+				<div class="col-sm-6 navbar-right pull-right">
+					{{ > yield region="navbarRight" }}
+				</div>
+			</div>
+		</div>
+	</div>
+
+</template>

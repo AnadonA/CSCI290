@@ -2,17 +2,36 @@
 	Registers a global helper function named 'serverStatus' that returns the 
 	current connection status of the MeteorJS server.
 	----------------------------------------------------------------------------	*/
-Handlebars.registerHelper('serverStatus', function(){
-	return (Meteor.status().status == "connected");
+Handlebars.registerHelper('clnServerStatus', function(){
+	if (Meteor.status().status == "connected")
+		return "connected";
+	return "disconnected";
 });
 
 /*	----------------------------------------------------------------------------
 	Registers a global helper function named 'todaysDate' that returns the 
 	current date (as stored in the Server itself).
 	----------------------------------------------------------------------------	*/
-Handlebars.registerHelper('todaysDate', function(){
+Handlebars.registerHelper('clnTodaysDate', function(){
 	var today 	= new Date();
 	return today.toLocaleDateString();
+});
+
+Handlebars.registerHelper('clnIsLoggedIn', function(){
+	return (Meteor.user() != undefined);
+});
+
+
+Handlebars.registerHelper('clnUserName', function(){
+	var user 	= Meteor.user();
+
+	if (user)
+		if (user.username){
+			return user.username;
+		return user.emails[0].address.split("@")[0];
+	}
+
+	return "Anonymous User";
 });
 
 /*	----------------------------------------------------------------------------

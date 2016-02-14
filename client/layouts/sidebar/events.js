@@ -1,4 +1,4 @@
-Template.mainLayout.events({
+Template.sidebar.events({
 	"click .tree-toggle-comm": 			function(event, template){
 		$(".tree-toggle-comm").children(".tree").toggle(300);
 	},

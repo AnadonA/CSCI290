@@ -55,7 +55,7 @@ course.prototype	= {
 				}
 			}
 	}
-}
+};
 
 /*	----------------------------------------------------------------------------
 	Creates the collection of Training Courses. Upon creation, each of their 
@@ -66,4 +66,4 @@ courses		= new Mongo.Collection("training.courses", {
 	transform: 		function(doc){
 		return new course(doc);
 	}
-})
+});

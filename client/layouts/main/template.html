@@ -1,0 +1,25 @@
+<template name="mainLayout">
+
+{{ > navbar }}
+
+{{ > sidebar }}
+
+<div class="body-content">
+	{{ > yield }}
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-bottom colorb" role="navigation">
+	<div class="container">
+		<div class="navbar-text pull-left">
+			Copyright &copy; 2015 D & A.
+		</div>
+	</div>
+</div>
+<!-- Include each of the primary login and registration forms. They are 
+	included in the mainLayout file to ensure that they are available 
+	regardless of where the user enters the application. -->
+{{ > _loginModal }}
+{{ > _registerModal }}
+{{ > _editUserModal }}
+
+</template>

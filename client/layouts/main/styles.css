@@ -1,0 +1,25 @@
+body{
+	padding: 			000px;
+	margin: 			000px auto;
+}
+
+footer {
+	background-color: 	#555;
+	color: 				white;
+	padding: 			015px;
+
+	height: 			020px;
+}
+
+.body-content{
+	margin:				000px auto;
+
+	padding:			000px;
+	padding-top: 		060px;
+	padding-left:		240px;
+	padding-right:		010px;
+}
+
+.colorb {
+	background-color:	#006ab3;
+}

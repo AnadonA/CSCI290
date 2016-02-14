@@ -1,0 +1,98 @@
+<template name="sidebar">
+
+{{ afterLoad }}
+
+<div class="sidebar pull-left" id="sidebar" role="navigation">
+	<div class="row">
+		<div class="col-sm-7">
+				{{ clnTodaysDate }}
+				<br>
+				{{ clnUserName }}
+		</div>
+		<div class="col-sm-5 pull-left">
+			{{ #if clnIsLoggedIn }}
+			<button class="btn btn-default logAction">
+				Logout
+			</button>
+			{{ else }}
+			<button class="btn btn-default" data-target="#_loginDialog" data-toggle="modal">
+				Login
+			</button>
+			{{ /if }}
+		</div>
+	</div>
+
+	<br>
+
+	<ul class="nav nav-pill nav-stacked">
+		<li class="">
+			<a href="{{ pathFor 'home' }}">
+				<span>
+					<i class="fa fa-home"></i>
+					<label>Home</label>
+				</span>
+			</a>
+		</li>
+
+		<li class="tree-toggle-comm">
+			<a href="">
+				<i class="fa fa-weixin"></i>
+				<label>Communication</label>
+			</a>
+
+			<ul class="nav nav-list tree" id="communictationTree">
+				<li style="margin-left: 015px">
+					<a href="">
+						<i class="fa fa-angle-right"></i>
+						Option 01
+					</a>
+				</li>
+
+				<li style="margin-left: 015px">
+					<a href="">
+						<i class="fa fa-angle-right"></i>
+						Option 02
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<li class="tree-toggle-train">
+			<a href="">
+				<i class="fa fa-tachometer"></i>
+				<label>Training</label>
+			</a>
+
+			<ul class="nav nav-list tree" id="trainingTree">
+
+				{{ #if clnIsAdmin 'training' }}
+				<li class="">
+					<a href="{{ pathFor 'Training Admin' }}">
+						<i class="fa fa-angle-right"></i>
+						Administration
+					</a>
+				</li>
+				{{ /if }}
+
+				<li class="">
+					<a href="#">
+						<i class="fa fa-angle-right"></i>
+						My Training
+					</a>
+				</li>
+
+				<li class="">
+					<a href="">
+						<i class="fa fa-angle-right"></i>
+						My Employees
+					</a>
+				</li>
+
+			</ul>
+		</li>
+	</ul>
+	<br>
+
+</div>
+
+</template>

@@ -10,7 +10,9 @@
 	TYPE: 		
 */
 
-Meteor.publish("training.courses");
+Meteor.publish("training.courses", function(){
+	return courses.find();
+});
 
 Meteor.publish("training.courses", function(pKeyword){
 	if (pKeyword)

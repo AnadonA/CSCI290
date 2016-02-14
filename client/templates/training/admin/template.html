@@ -1,0 +1,16 @@
+<template name="trainingAdmin">
+
+<!--	Ensure that the training admin navigational buttons are displayed
+		in the navbar. -->
+{{ #contentFor "navbarLeft" }}
+	{{ > trainingAdminNavbar }}
+{{ /contentFor }}
+
+<div class="row">
+	{{ > showTrainingCourses }}
+</div>
+
+{{ > _createTrainingCourse }}
+{{ > _createTrainingRequirement }}
+
+</template>

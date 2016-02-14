@@ -1,0 +1,42 @@
+.navbar-sidebar{
+
+	border:				000px;
+	width:				230px;
+
+	background-color: 	#f1f1f1;
+}
+
+.navbar-sidebar h2{
+	padding: 			000px;
+	padding-top:		010px;
+	padding-bottom:		010px;
+
+	margin: 			000px auto;
+
+	text-align: 		center;
+}
+
+.connected{
+	color:				#000;
+	font-weight:		normal;
+}
+
+.disconnected{
+	color:				#F00;
+	font-weight: 		boler;
+}
+
+.navbar .container{
+	padding: 			000px;
+	padding-top:		010px;
+}
+
+.navbar-left{
+	padding:			000px;
+	padding-left:		010px;
+}
+
+.navbar-right{
+	padding: 			000px;
+	padding-right:		010px;
+}

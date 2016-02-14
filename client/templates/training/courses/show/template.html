@@ -1,0 +1,92 @@
+<template name="showTrainingCourses">
+
+{{ #contentFor 'navbarRight' }}
+	
+	<button class="btn btn-default" data-target="#_createTrainingCourseDialog" data-toggle="modal" type="button">
+	Create Course
+	</button>
+
+{{ /contentFor }}
+
+<div class="col-sm-6">
+
+	{{ > trainingCoursesSearchBar }}
+
+	{{ #unless courses }}
+	<div class="panel-group">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				... No courses match the provided keyword ...
+			</div>
+		</div>
+	</div>
+	{{ /unless }}
+
+	{{ #each courses }}
+	<div class="panel-group">
+		<div class="panel {{ isSelectedCourse _id }}">
+			<div class="panel-heading coursePanel" id="{{ _id }}">
+				{{ name }}
+			</div>
+		</div>
+	</div>
+	{{ /each }}
+
+</div>
+
+<div class="col-sm-6">
+	{{ #if courseDetails }}
+	<div class="panel-group">
+		<div class="panel panel-primary">
+
+			<div class="panel-heading">
+				{{ courseDetails.name}}
+			</div>
+
+			<div class="panel-body">
+
+				<div class="form-group">
+					<label for="section">Section:</label>
+					<input class="form-control" id="section" placeholder="{{ courseDetails.section }}">
+				</div>
+
+				<div class="form-group">
+					<label for="section">Title:</label>
+					<span id="section">{{ courseDetails.title }}</span>
+				</div>
+
+				<div class="form-group">
+					<label for="section">Type:</label>
+					<input class="form-control" id="type" placeholder="{{ courseDetails.type }}">
+				</div>
+
+				<div class="form-group">
+					<label for="notes">Important Notes:</label>
+					<textarea class="form-control" id="notes" placeholder="{{ courseDetails.notes }}"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="section">Units:</label>
+					<input class="form-control" id="units" placeholder="{{ courseDetails.units }}">
+				</div>
+
+			</div>
+
+			<div class="panel-footer">
+
+				<div class="btn-group">
+					<button class="btn btn-success saveCourse">
+						Save Changes
+					</button>
+					<button class="btn btn-danger deleteCourse">
+						Remove Course
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	{{ /if }}
+</div>
+
+</template>

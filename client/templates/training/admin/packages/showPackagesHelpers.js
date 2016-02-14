@@ -1,10 +1,10 @@
 Template.showTrainingPackages.helpers({
 	packages: 				function(){
-		return trainingPackageCollection.find();
+		return [];
 	},
 
 	packageRequirement: 	function(){
 		var id = this.substr(0, this.length);
-		return trainingRequirementCollection.findOne({_id: id}).name;
+		return "N/A";
 	},
 });

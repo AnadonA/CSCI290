@@ -1,0 +1,51 @@
+<template name="_createTrainingCourse">
+
+	<div id="_createTrainingCourseDialog" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-md">
+
+			<div class="modal-content alert-primary">
+				<div class="modal-header ">
+					<button class="close pull-right" data-target="#_createTrainingCourseDialog" type="button"  data-toggle="modal" >&times;</button>
+					<center>
+						<h3 class="modal-title"> Create Training Course </h3>
+					</center>
+				</div>
+
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="registerEmail">Name:</label>
+							<input class="form-control" id="courseName" placeholder="Course" required type="text">
+						</div>
+						<div class="form-group">
+							<label for="registerUsername">Section:</label>
+							<input class="form-control" id="courseSection" placeholder="Course Section" required type="text">
+						</div>
+						<div class="form-group">
+							<label for="registerUsername">Title:</label>
+							<input class="form-control" id="courseTitle" placeholder="Course Title" required type="text">
+						</div>
+						<div class="form-group">
+							<label for="registerUsername">Notes:</label>
+							<textarea class="form-control" id="courseNotes" placeholder="Course Note" required ></textarea>
+						</div>
+						<div class="form-group">
+							<label for="registerUsername">Units:</label>
+							<input class="form-control" id="courseUnits" placeholder="course Description" required type="number">
+						</div>
+						<div class="form-group">
+							<label for="registerUsername">Type:</label>
+							<input class="form-control" id="courseType" placeholder="course Description" required type="text">
+						</div>
+						<center>
+							<input class="btn btn-sm btn-block btn-primary" type="submit" value="Create">
+						</center>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</template>

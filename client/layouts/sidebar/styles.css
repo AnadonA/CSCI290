@@ -1,0 +1,23 @@
+.sidebar {
+	background-color: 	#f1f1f1;
+
+	height:				100%;
+	width: 				230px;
+
+	position: 			fixed;
+	bottom:				000px;
+	left:				000px;
+
+	margin: 			000px auto;
+
+	padding-top:		060px;
+	padding-left: 		010px;
+}
+
+ul.navlist li{
+	margin-left:		015px;
+}
+
+.tree {
+	display:			none;
+}

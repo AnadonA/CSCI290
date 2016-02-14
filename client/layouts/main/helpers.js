@@ -1,15 +1,6 @@
 Template.mainLayout.helpers({
 
 	/*	------------------------------------------------------------------------
-		DESC: Resets the toggle state of the menu tree toggles.
-		------------------------------------------------------------------------	*/
-	"afterLoad": 			function(){
-		var toggleState		= $(".tree").is("visible");
-
-		$(".tree").toggle(300);
-	},
-
-	/*	------------------------------------------------------------------------
 		DESC: Tests the received path against the currently active path (which is 
 		set in the route configuration -- see /lib/routes.js). If they are a match,
 		then return the 'active' string. This should be used to set the 'active'
