@@ -19,10 +19,13 @@ Template.trainingCoursesSearchBar.events({
 		Session.set("training.courses.selectedCourse", undefined);
 	},
 
-	"keypress .courseKeyword": 		function(event){
-		if (event.charCode	== 13){
+	"keyup .courseKeyword": 		function(event){
+		var keyword 	= event.target.value;
+		console.log(keyword);
+
+		if (keyword.length > 0)
 			Session.set("training.courses.keyword", event.target.value);
-			event.stopPropagation();
-		}
+		else
+			Session.set("training.courses.keyword", undefined);
 	}
 });

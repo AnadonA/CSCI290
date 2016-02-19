@@ -10,11 +10,6 @@ Template._createTrainingCourse.events({
 		var section 	= event.target.courseSection.value;
 
 		var goForBroke	= true;
-		
-		if (courses.find({name: name}).count() > 0){
-			goForBroke 	= false;
-			toastr.error("A course by the requested name already exists. Perhaps you should consider editing it?", "Error Creating Course");
-		}
 
 		if (courses.find({section: section}).count() > 0){
 			goForBroke	= false;
@@ -32,6 +27,8 @@ Template._createTrainingCourse.events({
 					type: 		type
 				}
 			);
+
+			template.find("form").reset();
 		}
 
 

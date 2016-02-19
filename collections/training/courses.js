@@ -8,12 +8,18 @@
 	NOTES: 		
 	UNITS: 		
 	TYPE: 		
-	*/
 
+	----------------------------------------------------------------------------	*/
 course	= function(doc){
 	_.extend(this, doc);
 };
 
+/*	----------------------------------------------------------------------------
+	Course prototype extensions. These functions are those that can be performed
+	on ALL course objects. Which is a benefit to the programmer since ALL 
+	documents stored in the courses collection will be converted into course
+	objects at runtime.
+	----------------------------------------------------------------------------	*/
 course.prototype	= {
 	constructor: 	course,
 
@@ -30,11 +36,17 @@ course.prototype	= {
 				if (prerequisites.indexOf(pCourseID) < 0){
 					prerequisites.push(pCourseID);
 
-					courses.update({_id: this._id}, {$set: {prerequisites: prerequisites}});
+					courses.update(
+						{_id: this._id}, 
+						{$set: {prerequisites: prerequisites}}
+					);
 				}
 			}
 			else{
-				courses.update({_id: this._id}, {$set: {prerequisites: [pCourseID]}});
+				courses.update(
+					{_id: this._id}, 
+					{$set: {prerequisites: [pCourseID]}}
+				);
 			}
 	},
 

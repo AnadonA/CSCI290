@@ -1,0 +1,14 @@
+.badge{
+	padding: 		004px;
+	padding-left:	008px;
+	padding-right:	008px;
+}
+
+.removeIcon{
+	cursor: 		pointer;
+	padding-left:	005px;
+}
+
+#notes{
+	height: 		150px;
+}

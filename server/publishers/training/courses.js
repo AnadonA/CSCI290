@@ -11,19 +11,21 @@
 */
 
 Meteor.publish("training.courses", function(){
-	return courses.find();
+	return courses.find({},
+		{sort: {name: 1}});
 });
 
 Meteor.publish("training.courses", function(pKeyword){
 	if (pKeyword)
 		return courses.find({$or: [
-			{name: 	{$regex: /pKeywrod/i}},
-			{section: 	{$regex: /pKeywrod/i}},
-			{title: 	{$regex: /pKeywrod/i}},
-			{notes: 	{$regex: /pKeywrod/i}},
-			{units: 	{$regex: /pKeywrod/i}},
-			{type: 		{$regex: /pKeywrod/i}}
-		]});
+			{name: 	{$regex: /pKeyword/i}},
+			{section: 	{$regex: /pKeyword/i}},
+			{title: 	{$regex: /pKeyword/i}},
+			{notes: 	{$regex: /pKeyword/i}},
+			{units: 	{$regex: /pKeyword/i}},
+			{type: 		{$regex: /pKeyword/i}}
+		]},
+		{sort: {name: 1}});
 
 	return courses.find();
 })

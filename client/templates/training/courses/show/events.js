@@ -14,4 +14,15 @@ Template.showTrainingCourses.events({
 			Session.set("training.courses.selectedCourse", event.target.id);
 		}
 	},
+
+	"click .removeIcon": 			function(event){
+		var courseID 	= Session.get("training.courses.selectedCourse");
+		var prereqID 	= event.target.id;
+
+		if (courseID){
+			if (prereqID){
+				courses.findOne({_id: courseID}).removePrerequisite(prereqID);	
+			}
+		}
+	}
 });

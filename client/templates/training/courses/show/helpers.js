@@ -3,7 +3,8 @@ Template.showTrainingCourses.helpers({
 		var keyword		= Session.get("training.courses.keyword");
 
 		if (keyword){
-			return courses.find({$or: 
+			return courses.find(
+			{$or: 
 				[
 					{name: 		{$regex: keyword, $options: 'i'}},
 					{section: 	{$regex: keyword, $options: 'i'}},
@@ -30,5 +31,9 @@ Template.showTrainingCourses.helpers({
 			return courses.findOne({_id: courseID});
 
 		return false;
+	},
+
+	getPrerequisite: 	function(){
+		return courses.findOne({_id: this.toString()}).name;
 	}
 });

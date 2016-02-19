@@ -1,4 +1,7 @@
 Template.sidebar.events({
+	/*	------------------------------------------------------------------------
+		This function (and its sibling) hides the extra menus for the menu trees.
+		------------------------------------------------------------------------	*/
 	"click .tree-toggle-comm": 			function(event, template){
 		$(".tree-toggle-comm").children(".tree").toggle(300);
 	},

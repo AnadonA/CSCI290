@@ -1,3 +1,7 @@
+.navbar{
+	width: 				100%;
+}
+
 .navbar-sidebar{
 
 	border:				000px;
@@ -23,20 +27,27 @@
 
 .disconnected{
 	color:				#F00;
-	font-weight: 		boler;
+	font-weight: 		bolder;
 }
 
 .navbar .container{
 	padding: 			000px;
 	padding-top:		010px;
+
+	width:				95%;
 }
 
 .navbar-left{
 	padding:			000px;
 	padding-left:		010px;
+
+	float:				left;
+	text-align:			left;
 }
 
 .navbar-right{
 	padding: 			000px;
-	padding-right:		010px;
+
+	float:				right;
+	text-align:			right;
 }
