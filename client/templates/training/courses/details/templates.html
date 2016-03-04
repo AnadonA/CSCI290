@@ -1,0 +1,78 @@
+<template name="showCourseDetails">
+
+	{{ #if courseDetails }}
+	<div class="panel-group">
+		<div class="panel panel-primary">
+
+			<div class="panel-heading">
+				{{ courseDetails.Name }}
+			</div>
+
+			<div class="panel-body">
+
+				<div class="form-group">
+					<label for="section">Title:</label>
+					<input class="form-control" id="section" value="{{ courseDetails.Title }}">
+				</div>
+
+				<div class="form-group">
+					<label for="units">Units:</label>
+					<input class="form-control" id="units" type="text" value="{{ courseDetails.Units }}">
+				</div>
+
+				<div class="form-group">
+					<label for="desc">Description:</label>
+					<textarea class="form-control" id="desc" rows=3></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="prerequisites">Prerequisites:</label>
+
+					<input class="form-control" id="prerequisites">
+
+					<br> 
+					<div class="col-sm-12" id="prerequisites">
+						{{ #each courseDetails.Prerequisites }}
+						<div class="badge" href="#">
+							<a class="prerequisiteBadge" href="#">{{ getPrerequisite }}</a>
+							<i class="fa fa-times-circle removeIcon" id="{{ this }}"></i>
+						</div>
+						{{ /each }}
+					</div>
+				</div>
+
+				<br>
+
+				<div class="form-group">
+					<label for="aka">Also Known As:</label>
+					<input class="form-control" id="aka" type="text">
+				</div>
+
+				<br>
+				<div class="col-sm-12" id="otherNames">
+				{{ #each courseDetails.otherNames }}
+				<div class="badge">
+					<a class="prerequisiteBadge"></a>
+					<i class="fa fa-times-circle removeIcon" id="{{ this }}"></i>
+				</div>
+				{{ /each }}
+				</div>
+
+			</div>
+
+			<div class="panel-footer">
+
+				<div class="btn-group">
+					<button class="btn btn-success saveCourse">
+						Save Changes
+					</button>
+					<button class="btn btn-danger deleteCourse">
+						Remove Course
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	{{ /if }}
+</template>

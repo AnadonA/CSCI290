@@ -4,9 +4,17 @@
 	padding-right:	008px;
 }
 
+.coursePanel{
+	cursor: 		pointer;
+}
+
 .removeIcon{
 	cursor: 		pointer;
 	padding-left:	005px;
+}
+
+.prerequisiteBadge{
+	color: 			#000;
 }
 
 #notes{

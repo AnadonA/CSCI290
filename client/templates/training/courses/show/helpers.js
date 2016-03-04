@@ -6,8 +6,9 @@ Template.showTrainingCourses.helpers({
 			return courses.find(
 			{$or: 
 				[
-					{name: 		{$regex: keyword, $options: 'i'}},
-					{section: 	{$regex: keyword, $options: 'i'}},
+					{Name: 		{$regex: keyword, $options: 'i'}},
+					{Section: 	{$regex: keyword, $options: 'i'}},
+					{Title: 	{$regex: keyword, $options: 'i'}},
 				]
 			});
 		}
@@ -27,8 +28,10 @@ Template.showTrainingCourses.helpers({
 	courseDetails: 		function(){
 		var courseID 	= Session.get("training.courses.selectedCourse");
 
-		if (courseID)
-			return courses.findOne({_id: courseID});
+		if (courseID){
+			courseObject 		= new Mongo.ObjectID(courseID);
+			return courses.findOne({_id: courseObject});
+		}
 
 		return false;
 	},

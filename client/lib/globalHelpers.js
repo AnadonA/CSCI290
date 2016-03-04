@@ -17,16 +17,24 @@ Handlebars.registerHelper('clnTodaysDate', function(){
 	return today.toLocaleDateString();
 });
 
+/*	----------------------------------------------------------------------------
+	Registers a global helper function named 'isLoggedIn' that returns the 
+	current user status (logged in or not).
+	----------------------------------------------------------------------------	*/
 Handlebars.registerHelper('clnIsLoggedIn', function(){
 	return (Meteor.user() != undefined);
 });
 
-
+/*	----------------------------------------------------------------------------
+	Registers a global helper function named userName that retrieves the current
+	users userName and returns it. If no userName is present then the email is
+	split and used in its place.
+	----------------------------------------------------------------------------	*/
 Handlebars.registerHelper('clnUserName', function(){
 	var user 	= Meteor.user();
 
-	if (user)
-		if (user.username){
+	if (user){
+		if (user.username)
 			return user.username;
 		return user.emails[0].address.split("@")[0];
 	}

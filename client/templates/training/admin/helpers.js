@@ -37,5 +37,11 @@ Template.trainingAdmin.helpers({
 		var selection 	= Session.get(taSelection);
 
 		return (selection.indexOf(pButtonName) >= 0);
+	},
+
+	isActivePath: 			function(pPath){
+		var activePath 	= Session.get("training.admin.activePath");
+
+		return (activePath == pPath);
 	}
 });

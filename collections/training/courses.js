@@ -29,12 +29,21 @@ course.prototype	= {
 		prerequisite array, then add it and update the Course.
 		------------------------------------------------------------------------	*/
 	registerPrerequisite: 		function(pCourseID){
-		if (pCourseID)
+
+		var courseID 	= courses.findOne(
+			{$or: 
+				[
+					{id: pCourseID},
+					{name: {$regex: pCourseID, $options: "i"}}
+				]
+			})._id;
+
+		if (courseID)
 			if (this.prerequisites){
 				var prerequisites	= this.prerequisites;
 
-				if (prerequisites.indexOf(pCourseID) < 0){
-					prerequisites.push(pCourseID);
+				if (prerequisites.indexOf(courseID) < 0){
+					prerequisites.push(courseID);
 
 					courses.update(
 						{_id: this._id}, 
@@ -45,7 +54,7 @@ course.prototype	= {
 			else{
 				courses.update(
 					{_id: this._id}, 
-					{$set: {prerequisites: [pCourseID]}}
+					{$set: {prerequisites: [courseID]}}
 				);
 			}
 	},
@@ -75,6 +84,7 @@ course.prototype	= {
 	simplified use.
 	----------------------------------------------------------------------------	*/
 courses		= new Mongo.Collection("training.courses", {
+	idGeneration: 	"MONGO",
 	transform: 		function(doc){
 		return new course(doc);
 	}

@@ -21,7 +21,6 @@ Template.trainingCoursesSearchBar.events({
 
 	"keyup .courseKeyword": 		function(event){
 		var keyword 	= event.target.value;
-		console.log(keyword);
 
 		if (keyword.length > 0)
 			Session.set("training.courses.keyword", event.target.value);

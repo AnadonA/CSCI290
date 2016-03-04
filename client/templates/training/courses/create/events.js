@@ -1,36 +1,40 @@
 Template._createTrainingCourse.events({
+	/*	------------------------------------------------------------------------
+		Attempts to insert the user requested course information into the courses
+		collection. If the insert command fails for any reason, the user is
+		informed of the encountered issue(s).
+		------------------------------------------------------------------------	*/
 	'submit form': 				function(event, template){
+		//	The magic function.
 		event.preventDefault();
 		
+		//	Retrieve the user-input values
 		var name 		= event.target.courseName.value;
-		var type 		= event.target.courseType.value;
 		var title 		= event.target.courseTitle.value;
-		var notes 		= event.target.courseNotes.value;
 		var units		= event.target.courseUnits.value;
-		var section 	= event.target.courseSection.value;
 
-		var goForBroke	= true;
+		// Apply case correction to the course name.
+		name 			= name.trim().toUpperCase();
 
-		if (courses.find({section: section}).count() > 0){
-			goForBroke	= false;
-			toastr.error("A course by the requested section already exists. Perhaps you should consider editing it?", "Error Creating Course")
-		}
-		
-		if (goForBroke){
-			courses.insert(
-				{
-					name: 		name, 
-					section: 	section,
-					title: 		title,
-					notes: 		notes,
-					units: 		units,
-					type: 		type
+		//	Attempt to insert the requested information into the courses 
+		//	collection.
+		courses.insert(
+			{
+				Name: 		name, 
+				Title: 		title,
+				Units: 		units
+			},
+			function(error){
+				if (error){
+					toastr.error(error.reason, "New Course Addition Failed.")
 				}
-			);
+			}
+		);
 
-			template.find("form").reset();
-		}
+		//	Clear the form
+		template.find("form").reset();
 
-
+		//	Hide the dialog after processing the request
+		$("#_createTrainingCourseDialog").modal("hide");
 	}
 });

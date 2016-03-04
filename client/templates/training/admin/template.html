@@ -7,7 +7,12 @@
 {{ /contentFor }}
 
 <div class="row">
-	{{ > showTrainingCourses }}
+	{{ #if isActivePath "courses" }}
+		{{ > showTrainingCourses }}
+	{{ /if }}
+	{{ #if isActivePath "programs" }}
+		{{ > showTrainingPrograms }}
+	{{ /if }}
 </div>
 
 {{ > _createTrainingCourse }}
