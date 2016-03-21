@@ -19,47 +19,5 @@ Template.showTrainingCourses.events({
 		else{
 			Session.set("training.courses.selectedCourse", event.target.id);
 		}
-	},
-
-	"click .removeIcon": 			function(event){
-		var courseID 	= Session.get("training.courses.selectedCourse");
-		var prereqID 	= event.target.id;
-
-		if (courseID){
-			if (prereqID){
-				courses.findOne({_id: courseID}).removePrerequisite(prereqID);	
-			}
-		}
-	},
-
-	"keypress #prerequisites": 		function(event){
-
-		var courseID 	= Session.get("training.courses.selectedCourse");
-		var prereq 	 	= event.target.value;
-
-		if (courseID && prereq){
-			if (event.charCode == 59 || event.charCode == 44 || event.charCode == 13){
-				event.preventDefault();
-				courses.findOne({_id: courseID}).registerPrerequisite(prereq.toString());
-				event.target.value = "";
-			}
-		}
-	},
-
-	"click .saveCourse": 			function(event){
-		var courseID 	= new Mongo.ObjectID(Session.get("training.courses.selectedCourse"));
-
-		if (courseID){
-			console.log("Working to save the course information");
-		}
-	},
-
-	"click .deleteCourse": 			function(event){
-		var courseID 	= Session.get("training.courses.selectedCourse");
-
-		if (courseID){
-			courses.remove({_id: courseID});
-			Session.set("training.courses.selectedCourse", undefined);
-		}
 	}
 });

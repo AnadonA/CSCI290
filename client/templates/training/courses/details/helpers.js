@@ -22,6 +22,6 @@ Template.showCourseDetails.helpers({
 		ID value and returns it for use.
 		------------------------------------------------------------------------	*/
 	getPrerequisite: 	function(){
-		return courses.findOne({_id: this.toString()}).name;
+		return courses.findOne({_id: this}).Name;
 	}
 });

@@ -1,7 +1,7 @@
 <template name="showCourseDetails">
 
 	{{ #if courseDetails }}
-	<div class="panel-group">
+	<div class="panel-group courseDetails">
 		<div class="panel panel-primary">
 
 			<div class="panel-heading">
@@ -32,10 +32,10 @@
 
 					<br> 
 					<div class="col-sm-12" id="prerequisites">
-						{{ #each courseDetails.Prerequisites }}
+						{{ #each courseDetails.prerequisites }}
 						<div class="badge" href="#">
 							<a class="prerequisiteBadge" href="#">{{ getPrerequisite }}</a>
-							<i class="fa fa-times-circle removeIcon" id="{{ this }}"></i>
+							<i class="fa fa-times-circle removeIcon" id="{{ _str }}"></i>
 						</div>
 						{{ /each }}
 					</div>

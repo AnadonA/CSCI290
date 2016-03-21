@@ -28,35 +28,71 @@ course.prototype	= {
 		current course. If the provided CourseID does not currently exist in the
 		prerequisite array, then add it and update the Course.
 		------------------------------------------------------------------------	*/
-	registerPrerequisite: 		function(pCourseID){
-
+	registerPrerequisite: 		function(pCourseCriteria){
+		//	Subscribe to the Training Courses collection so that we can modify
+		//	collection entries.
+		Meteor.subscribe("training.courses");
+		
+		//	Retrieve the _id of the first course that matches the provided 
+		//	criteria (if one exists).
 		var courseID 	= courses.findOne(
 			{$or: 
 				[
-					{id: pCourseID},
-					{name: {$regex: pCourseID, $options: "i"}}
+					{id: pCourseCriteria},
+					{Name: 	{$regex: pCourseCriteria, $options: "i"}},
+					{Title: {$regex: pCourseCriteria, $options: "i"}}
 				]
-			})._id;
+			});
 
-		if (courseID)
+		//	If there was a course that matched the provided criteria, then add 
+		//	register IT as a prerequisite of the course.
+		if (courseID){
+			courseID 	= courseID._id;
+
 			if (this.prerequisites){
+				var exists 			= false;
 				var prerequisites	= this.prerequisites;
 
-				if (prerequisites.indexOf(courseID) < 0){
-					prerequisites.push(courseID);
+				//	If the current prerequisites list already includes one or
+				//	more prerequisite entries.
+				if (prerequisites.length > 0){
+					//	Look for the identified prerequisite in the current 
+					//	prerequisite list.
+					for (i = 0; i < prerequisites.length; i++){
+						if (prerequisites[i]._str == courseID._str){
+							exists 		= true;
+							console.log("The requested prerequisite already exists in the array.");
+							break;
+						}
+					}
 
+					//	If the identified prerequisite does not already exist in 
+					//	the prerequisite list then push it into the list and update
+					//	the current course in the collection.
+					if (!exists && courseID._str != this._id._str){
+						prerequisites.push(courseID);
+
+						courses.update(
+							{_id: this._id}, 
+							{$set: {prerequisites: prerequisites}}
+						);
+					}
+				}
+				//	If the current prerequisites list is empty, then simply
+				//	update the current course in the collection to include the
+				//	identified prerequisite (an array of 1).
+				else
+				{
 					courses.update(
-						{_id: this._id}, 
-						{$set: {prerequisites: prerequisites}}
+						{_id: this._id},
+						{$set: 	{prerequisites: [courseID]}}
 					);
 				}
 			}
-			else{
-				courses.update(
-					{_id: this._id}, 
-					{$set: {prerequisites: [courseID]}}
-				);
-			}
+		}
+		else {
+			console.log("A prerequisite of including the requested criteria (" + pCourseCriteria + ") was not found.");
+		}
 	},
 
 	/*	------------------------------------------------------------------------
@@ -65,10 +101,24 @@ course.prototype	= {
 		of the array and update the Course.
 		------------------------------------------------------------------------	*/
 	removePrerequisite: 		function(pCourseID){
+
+		console.log(pCourseID);
+
 		if (pCourseID)
-			if (this.prerequisites){
+
+			if (this.prerequisites){	
+				var index 			= -1;			
 				var prerequisites	= this.prerequisites;
-				var index 			= prerequisites.indexOf(pCourseID);
+
+				for (i = 0; i < prerequisites.length; i++){
+					console.log(pCourseID, prerequisites[i]);
+					if (prerequisites[i]._str == pCourseID){
+						index 	= i;
+						break;
+					}
+				}
+
+				console.log(index);
 
 				if (index >= 0){
 					prerequisites.splice(index, 1);
@@ -88,4 +138,18 @@ courses		= new Mongo.Collection("training.courses", {
 	transform: 		function(doc){
 		return new course(doc);
 	}
+});
+
+
+/*	----------------------------------------------------------------------------
+	Allow complete access to update course documents.
+	----------------------------------------------------------------------------	*/
+courses.allow({
+	update: 		function(){
+		return true;
+	}
+});
+
+courses.deny({
+
 });

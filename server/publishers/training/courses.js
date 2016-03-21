@@ -12,20 +12,17 @@
 
 Meteor.publish("training.courses", function(){
 	return courses.find({},
-		{sort: {name: 1}});
+		{sort: {Name: 1}});
 });
 
 Meteor.publish("training.courses", function(pKeyword){
 	if (pKeyword)
 		return courses.find({$or: [
-			{name: 	{$regex: /pKeyword/i}},
-			{section: 	{$regex: /pKeyword/i}},
-			{title: 	{$regex: /pKeyword/i}},
-			{notes: 	{$regex: /pKeyword/i}},
-			{units: 	{$regex: /pKeyword/i}},
-			{type: 		{$regex: /pKeyword/i}}
+			{Name: 		{$regex: /pKeyword/i}},
+			{Title: 	{$regex: /pKeyword/i}},
+			{Units: 	{$regex: /pKeyword/i}},
 		]},
-		{sort: {name: 1}});
+		{sort: {Name: 1}});
 
 	return courses.find();
-})
+});
