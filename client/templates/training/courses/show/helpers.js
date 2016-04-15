@@ -1,6 +1,6 @@
 Template.showTrainingCourses.helpers({
 	courses: 			function(){
-		var keyword		= Session.get("training.courses.keyword");
+		var keyword		= searchable.GetKeywords();
 
 		if (keyword){
 			return courses.find(
@@ -10,19 +10,31 @@ Template.showTrainingCourses.helpers({
 					{Section: 	{$regex: keyword, $options: 'i'}},
 					{Title: 	{$regex: keyword, $options: 'i'}},
 				]
-			});
+			},
+			{sort: 	{Name: 		1}});
 		}
 
 		return courses.find();
 	},
 
+	shortTitle: 		function(){
+		var length 	= 0;
+		var title 	= "";
+		var input 	= this.Title;
+
+		if (input.length > 8){
+			for (var i = 0; i < 8; i ++)
+				title += input[i];
+			title 	+= "...";
+		}
+		else
+			title 	= input;
+
+		return title;
+	},
+
 	isSelectedCourse: 	function(pCourseID){
-		var courseID 	= Session.get("training.courses.selectedCourse");
-
-		if (pCourseID == courseID)
-			return "panel-primary";
-
-		return "panel-default";
+		return selectable.CheckSelections("training.courses", pCourseID);
 	},
 
 	courseDetails: 		function(){
@@ -38,5 +50,16 @@ Template.showTrainingCourses.helpers({
 
 	getPrerequisite: 	function(){
 		return courses.findOne({_id: this.toString()}).name;
+	},
+
+	getMultiMode: 		function(){
+		var multiMode 	= selectable.GetSelectionMode("training.courses");
+
+		return multiMode ? "checked" : "";
+	},
+
+	isSelected: 		function(){
+		var count 	= selectable.GetSelections("training.courses").length;
+		return (count >= 1) ? true : false;
 	}
 });

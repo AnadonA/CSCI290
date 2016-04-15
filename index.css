@@ -1,0 +1,42 @@
+html, body{
+
+	position: 	fixed;
+	height:		100%;
+	width:		100%;
+}
+
+.collapseSwitch {
+	cursor: 	pointer;
+}
+
+.default,
+.borderDefault {
+	color:			black;
+	border-color: 	#f6f6f6;
+}
+
+.danger,
+.borderDanger {
+	color:			red;
+	font-weight: 	bold;
+
+	border-color:	red;
+}
+
+.success,
+.borderSuccess {
+	color:			green;
+	border-color: 	green;
+}
+
+.warning,
+.borderWarning {
+	color:			yellow;
+	font-style: 	italic;
+
+	border-color: 	yellow;
+}
+
+blockquote {
+	font-size: 		014px;
+}

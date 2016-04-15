@@ -29,7 +29,7 @@
 			<a href="{{ pathFor 'home' }}">
 				<span>
 					<i class="fa fa-home"></i>
-					<label>Home</label>
+					<label id="NavHome">Home</label>
 				</span>
 			</a>
 		</li>
@@ -42,16 +42,23 @@
 
 			<ul class="nav nav-list tree" id="communictationTree">
 				<li style="margin-left: 015px">
-					<a href="{{ pathFor 'email' }}">
+					<a href="{{ pathFor 'Communication' }}">
 						<i class="fa fa-angle-right"></i>
-						Option 01
+						Messages
 					</a>
 				</li>
 
 				<li style="margin-left: 015px">
-					<a href="">
+					<a href="{{ pathFor 'Communication Manage Announcements' }}">
 						<i class="fa fa-angle-right"></i>
-						Option 02
+						Manage Announcements
+					</a>
+				</li>
+				
+				<li style="margin-left: 015px">
+					<a href="{{ pathFor 'Communication Support' }}">
+						<i class="fa fa-angle-right"></i>
+						Support
 					</a>
 				</li>
 			</ul>
@@ -65,6 +72,14 @@
 
 			<ul class="nav nav-list tree" id="trainingTree">
 
+				<li class="">
+					<a href="{{ pathFor 'Training Home' }}">
+						<i class="fa fa-angle-right"></i>
+						My Training
+					</a>
+				</li>
+
+				<!-- Area hidden to avoid 
 				{{ #if clnIsAdmin 'training' }}
 				<li class="">
 					<a href="{{ pathFor 'Training Admin' }}">
@@ -73,18 +88,11 @@
 					</a>
 				</li>
 				{{ /if }}
-
+				-->
 				<li class="">
-					<a href="#">
+					<a href="{{ pathFor 'Training Admin' }}">
 						<i class="fa fa-angle-right"></i>
-						My Training
-					</a>
-				</li>
-
-				<li class="">
-					<a href="">
-						<i class="fa fa-angle-right"></i>
-						My Employees
+						Administration
 					</a>
 				</li>
 

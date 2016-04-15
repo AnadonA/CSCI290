@@ -1,5 +1,18 @@
 Meteor.startup(function(){
+	/* process.env.MAIL_URL = "smtp://postmaster%40sandbox73837475798444269e48095dfd982ff3.mailgun.org:de65df43564f22da3890fd1c731b5766@smtp.mailgun.org:587";
+*/
 	Meteor.methods({
+
+		/* sendEmail: function(to, subject, text){
+			
+			Email.send({
+			to: to,
+			from: Meteor.user().address,
+			subject: subject,
+			text: text
+			});
+			}, 
+*/
 		/*	--------------------------------------------------------------------
 			Attempts to change the users - identified by the provided UserID - 
 			username.
@@ -122,4 +135,7 @@ Meteor.startup(function(){
 			);
 		}
 	});
+
 });
+
+

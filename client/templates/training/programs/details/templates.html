@@ -1,0 +1,71 @@
+<template name="trainingProgramsDetails">
+
+	{{ > trainingProgramsSub name=programDetails.name desc=programDetails.desc programs=programDetails.programs }}
+
+</template>
+
+<template name="trainingProgramsSub">
+	<div class="panel panel-primary programPanel">
+		<div class="panel-heading">
+			<h3> {{ name }} </h3>
+		</div>
+
+		<div class="panel-body">	
+			{{ desc }}
+
+			<br>
+
+			<div class="panel-group">
+				{{ #each programs }}
+				<div class="panel panel-default">
+					<div class="panel-heading collapseSwitch" data-target=".{{ year }}" data-toggle="collapse">
+						<h4> {{ year }} </h4>
+					</div>
+
+					<div class="panel-body collapse {{ year }}">
+						{{ #each requirements }}
+						{{ >trainingProgramsDetailsSub name=name desc=desc type=type courses=courses requirements=requirements}}
+						{{ /each }}
+					</div>
+
+				</div>
+				{{ /each }}
+			</div>		
+		</div>
+	</div>
+</template>
+
+<template name="trainingProgramsDetailsSub">
+
+	<div class="panel programPanel {{ panelType }}">
+
+		<br>
+
+		<blockquote class="{{ panelType }}">
+			<span class="heading collapseSwitch" data-target=".{{ fixName name }}Body" data-toggle="collapse">
+				<h4><b> {{ name }} </b></h4>
+			</span>
+
+			<hr>
+
+			<div class="body collapse {{ fixName name }}Body">
+				{{ desc }}
+
+				<hr>
+
+				{{ #if courses }}
+
+					{{ listCourses courses}}
+
+				{{ else }}
+					{{ #each requirements }}
+					{{ > trainingProgramsDetailsSub name=name desc=desc courses=courses type=type requirements=requirements }}
+					{{ /each }}
+				{{ /if }}
+
+
+			</div>
+		</blockquote>
+	</div>
+
+</template>

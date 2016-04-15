@@ -1,24 +1,28 @@
 Template.showCourseDetails.events({
 	"keypress #prerequisites": 		function(event){
 		var prereq 	 	= event.target.value;
-		var courseID 	= new Mongo.ObjectID(Session.get("training.courses.selectedCourse"));
 
+		if (event.charCode == 59 || event.charCode == 44 || event.charCode == 13){
+			event.preventDefault();
 
-		if (courseID && prereq){
-			if (event.charCode == 59 || event.charCode == 44 || event.charCode == 13){
-				event.preventDefault();
+			var selections 	= selectable.GetSelections("training.courses");
+			for (var i = 0; i < selections.length; i++){
 
-				courses.findOne({_id: courseID}).registerPrerequisite(prereq);
-				event.target.value = "";
+				var courseID 	= new Mongo.ObjectID(selections[i]);
+
+				if (courseID && prereq){
+					var course 	= courses.findOne({_id: courseID});
+					course.registerPrerequisite(prereq);
+					event.target.value = "";
+				}
 			}
 		}
+		
 	},
 
 	"click .removeIcon": 			function(event){
 		var prereqID 	= event.target.id;
-		var courseID 	= Session.get("training.courses.selectedCourse");
-
-		console.log(prereqID);
+		var courseID 	= selectable.GetSelections("training.courses")[0];
 
 		if (courseID){
 			courseID 	= new Mongo.ObjectID(courseID);

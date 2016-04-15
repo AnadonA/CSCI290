@@ -147,7 +147,13 @@ courses		= new Mongo.Collection("training.courses", {
 courses.allow({
 	update: 		function(){
 		return true;
-	}
+	},
+
+	insert: 		function(){
+		return true;
+	},
+
+	
 });
 
 courses.deny({

@@ -4,11 +4,54 @@
 		<!-- This is where the home content will be housed. It has been coded
 		into this IF statement to ensure that only personnel who have 
 		successfully logged in can view it. -->
-		... Home content will go here ...
 	{{ else }}
 		<!-- The current user is NOT logged in. Do not let them see any of the 
 		privileged data. Inform them of the issue. -->
 		{{ > noViewForYou }}
 	{{ /if }}
 
+
+
+<div class="container">
+<header>
+<h1 align="center">All Announcements</h1>
+<hr>
+<div class="text-center">
+<button type="button" value='Change Text' class="btn btn-primary">All <span class="badge" id="allButton">{{ messageCount "All" }}</span></button>
+<button type="button" class="btn btn-success">On-going <span class="badge" id="ongoingButton"> {{ messageCount "Notice" }}</span></button>
+<button type="button" class="btn btn-danger">Urgent <span class="badge" id="urgentButton"> {{ messageCount "Urgent" }}</span></button>
+</div>
+<hr>
+</header>
+<div class="container" style="overflow:auto; height:600px;width:900px;">
+<ul>
+<!--
+{{loadallBadge}}
+-->
+{{#each Announcements}} 
+<div class="well panel-heading collapseSwitch"  title="Click to expand" align="center" data-toggle="collapse" data-target=".{{posted}}">
+{{title}} | Posted: {{posted}}
+</div>
+<div class="panel-body collapse {{posted}}">
+{{ #each Announcements }}
+<br>
+<hr>
+Title: {{title}} <br>
+<hr>
+Posted By: {{ name }} <br>
+<hr>
+Posted On: {{posted}} <br>
+<hr>
+Expires: {{expires}} <br>
+<hr>
+More Information: {{information}} 
+<hr>
+<br>
+{{ /each }}
+</div>
+
+{{/each}}
+</ul>
+</div>
+</div>
 </template>

@@ -10,17 +10,13 @@
 	TYPE: 		
 */
 
-Meteor.publish("training.courses", function(){
-	return courses.find({},
-		{sort: {Name: 1}});
-});
-
 Meteor.publish("training.courses", function(pKeyword){
 	if (pKeyword)
 		return courses.find({$or: [
-			{Name: 		{$regex: /pKeyword/i}},
-			{Title: 	{$regex: /pKeyword/i}},
-			{Units: 	{$regex: /pKeyword/i}},
+			{Name: 			{$regex: /pKeyword/i}},
+			{Title: 		{$regex: /pKeyword/i}},
+			{Units: 		{$regex: /pKeyword/i}},
+			{programKeys: 	{$regex: /pKeyword/i}},
 		]},
 		{sort: {Name: 1}});
 

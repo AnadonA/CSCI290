@@ -8,5 +8,11 @@ Template.sidebar.events({
 
 	"click .tree-toggle-train": 		function(event, template){
 		$(".tree-toggle-train").children(".tree").toggle(300);
+	},
+	/*
+	"click #NavHome":				function(){
 	}
+	*/
+	
+	
 });

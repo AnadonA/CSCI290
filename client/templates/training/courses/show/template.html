@@ -10,7 +10,16 @@
 
 <div class="col-sm-6">
 
-	{{ > trainingCoursesSearchBar }}
+	<div class="col-sm-8">
+		{{ > searchable }}
+	</div>
+	<div class="col-sm-4">
+		<input class="trainingMultiSelect" {{ getMultiMode }} type="checkbox"> Allow Multi
+		{{ #if isSelected }}
+		<button class="trainingSelectionReset btn btn-default">Reset</button>
+		{{ /if }}
+	</div>
+
 
 	{{ #unless courses }}
 	<div class="panel-group">
@@ -22,15 +31,29 @@
 	</div>
 	{{ /unless }}
 
-	{{ #each courses }}
-	<div class="panel-group">
-		<div class="panel {{ isSelectedCourse _id._str }}">
-			<div class="panel-heading coursePanel" id="{{ _id._str }}">
-				({{ Name }}) {{ Title }} 
+	<div class="panel panel-default trainingCoursePanel fill">
+	<div class="panel-body" id="courseListPanel">
+		<div class="">
+
+		<br>
+
+		{{ #each courses }}
+			<div class="panel-group col-sm-6">
+				<div class="panel panel-default {{ isSelectedCourse _id._str }}" data-toggle="tooltip" title="{{ Title }}">
+					<div class="panel-heading selectable" id="{{ _id._str }}">
+						{{ Name }}
+						<br>
+						{{ shortTitle }}
+					</div>
+				</div>
 			</div>
+		{{ /each }}	
+
+		<br>
+
 		</div>
 	</div>
-	{{ /each }}
+	</div>
 
 </div>
 

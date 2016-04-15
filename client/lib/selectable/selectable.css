@@ -1,0 +1,20 @@
+.selectable {
+	cursor: 			pointer;
+}
+
+.selected {
+	font-weight: 		bold;
+	color:				black;
+	
+	border-radius:		010px;
+	border: 			002px solid yellow;
+}
+
+.notSelected {
+	font-weight: 		normal;
+	color:				#577492;
+
+	border-radius:		010px;
+	border:				002px solid #d0d0d0;
+
+}

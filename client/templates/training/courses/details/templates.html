@@ -12,7 +12,7 @@
 
 				<div class="form-group">
 					<label for="section">Title:</label>
-					<input class="form-control" id="section" value="{{ courseDetails.Title }}">
+					<input class="form-control" {{ readMode }} id="section" value="{{ courseDetails.Title }}">
 				</div>
 
 				<div class="form-group">
@@ -21,11 +21,11 @@
 				</div>
 
 				<div class="form-group">
-					<label for="desc">Description:</label>
-					<textarea class="form-control" id="desc" rows=3></textarea>
+					<label for="aka">Also Known As:</label>
+					<input class="form-control" {{ readMode }} id="aka" type="text">
 				</div>
 
-				<div class="form-group">
+				<div class="form-group" >
 					<label for="prerequisites">Prerequisites:</label>
 
 					<input class="form-control" id="prerequisites">
@@ -42,22 +42,34 @@
 				</div>
 
 				<br>
-
-				<div class="form-group">
-					<label for="aka">Also Known As:</label>
-					<input class="form-control" id="aka" type="text">
-				</div>
-
 				<br>
+
 				<div class="col-sm-12" id="otherNames">
-				{{ #each courseDetails.otherNames }}
-				<div class="badge">
-					<a class="prerequisiteBadge"></a>
-					<i class="fa fa-times-circle removeIcon" id="{{ this }}"></i>
-				</div>
-				{{ /each }}
+					{{ #each courseDetails.otherNames }}
+					<div class="badge">
+						<a class="prerequisiteBadge"></a>
+						<i class="fa fa-times-circle removeIcon" id="{{ this }}"></i>
+					</div>
+					{{ /each }}
 				</div>
 
+				<hr>
+				
+				<div class="form-group">
+					<label for="programKeys">Program Keys:</label>
+					<input class="form-control" id="programKeys">
+
+					<br>
+					<div class="col-sm-12" id="programKeys">
+						{{ #each courseDetails.programKeys }}
+						<div class="badge" href="#">
+							<a class="programKeyBadge" href="#"> Key </a>
+							<i class="fa fa-times-circle removeIcon" id="{{ _str }}"></i>
+						</div>
+						{{ /each }}
+					</div>
+				</div>
+				
 			</div>
 
 			<div class="panel-footer">
@@ -75,4 +87,5 @@
 		</div>
 	</div>
 	{{ /if }}
+
 </template>

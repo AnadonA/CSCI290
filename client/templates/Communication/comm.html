@@ -1,0 +1,178 @@
+<!-- 
+	No head/body html should be included in these files. 
+	They have been included in the index.html file.
+
+-->
+<template name="Communication">
+
+
+
+<div class="container">
+<header>
+<h1 align="center"> Messages</h1>
+<hr>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Inbox</a></li>
+      <li><a href="#">Sent</a></li>
+      <li><a href="#">Drafts</a></li>
+      <li><a href="#">Trash</a></li>
+    </ul>
+  </div>
+</nav>
+<hr>
+</header>
+</div>
+</template>
+
+
+<template name="CommunicationManageAnnouncements">
+
+<div class="container">
+<header>
+<h1 align="center"> Manage Announcements</h1>
+<hr>
+<div class="text-center">Click an Announcement to Edit/Remove it, or 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CreateModal" align="center"> Create An Annoucement </button>
+<div class="modal fade" id="CreateModal" role="dialog">
+<div class="modal-dialog">
+
+<div class="modal-content" style="overflow:auto">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create Announcement</h4>
+        </div>
+        <div class="modal-body">
+          <form id="createform">
+		<label>Title:</label><br>
+		<input type="text" class="thetitle" placeholder="Announcement Title" required><br>
+		<br>
+		<label>Name:</label><br>
+		<input type="text" class="thename" placeholder="John Doe" required><br>
+		<br>
+		<label>Start Date:</label><br>
+		<input type="date" class="startdate" placeholder="4/12/2016" required><br>
+		<br>
+		<label>End Date:</label><br>
+		<input type="date" class="enddate" placeholder="4/14/2016"><br>
+		<br>
+		<label>Type:</label><br>
+		<input type="text" class="type" placeholder="Urgent, Notice" required><br>
+		<br>
+		<label>Information:</label><br>
+		<input type="text" class="info" placeholder="This is an announcement to address..." required> <br>
+		
+	</form>
+        </div>
+        <div class="modal-footer">
+	<div class="text-center">
+	<button type="button" class="btn btn-primary createannoucement" data-dismiss="modal"> Create </button>
+	<button type="button" class="btn btn-success resettest"> Reset Fields </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+	</div>
+        </div>
+	</div>
+    </div>
+  </div>
+  
+</div>
+</header>
+<hr>
+<div class="container" style="overflow:auto; height:600px;width:900px;">
+<ul>
+{{#each Announcements}} 
+<div class="well" align="center"  title="Click to edit or remove" data-toggle="modal" data-target="#EditRemove">{{title}}</div>
+{{/each}}
+</ul>
+</div>
+<div class="text-center">
+<div class="modal fade" id="EditRemove" role="dialog">
+<div class="modal-dialog">
+
+<div class="modal-content" style="overflow:auto">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit/Remove Announcement</h4>
+        </div>
+        <div class="modal-body">
+          <form id="editform">
+		<label>Title:</label><br>
+		<input type="text" class="thetitle" id="edittitle" placeholder="Announcement Title" required><br>
+		<br>
+		<label>Name:</label><br>
+		<input type="text" class="thename" id="editname" placeholder="John Doe" required><br>
+		<br>
+		<label>Start Date:</label><br>
+		<input type="date" class="startdate" id="editstartdate" placeholder="4/12/2016" required><br>
+		<br>
+		<label>End Date:</label><br>
+		<input type="date" class="enddate" id="editenddate" placeholder="4/14/2016"><br>
+		<br>
+		<label>Type:</label><br>
+		<input type="text" class="type" id="edittype" placeholder="Urgent, Notice" required><br>
+		<br>
+		<label>Information:</label><br>
+		<input type="text" class="info" id="editinfo" placeholder="This is an announcement to address..." required> <br>
+		
+	</form>
+        </div>
+        <div class="modal-footer">
+	<div class="text-center">
+	<button type="button" class="btn btn-primary updateannoucement" data-dismiss="modal"> Apply Changes </button>
+	<button type="button" class="btn btn-success resettest2"> Reset Fields </button>
+	<button type="button" class="btn btn-danger removebtn" data-dismiss="modal"> Remove Announcement </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+	</div>
+        </div>
+      </div>
+</div>
+</div>
+</div>
+</div>
+
+
+</template>
+
+
+
+<template name="Communication Support">
+
+<div class="container">
+<header>
+<h1 align="center"> Support </h1>
+<hr>
+<div align="center">
+<button type="button" class="btn btn-primary submitticket" data-toggle="collapse" data-target="#submit"> Submit A Ticket </button>
+</div>
+<hr>
+<div id="submit" class="collapse text-center">
+<form id="submitform">
+		<label>Your Name: &nbsp;</label>
+		<input type="text" class="submitname" id="submitname" placeholder="John Doe" required><br>
+		<br>
+		<label>Your Email: &nbsp;</label>
+		<input type="text" class="submitemail" id="submitemail" placeholder="example@example.com" required><br>
+		<br>
+		<label>Today's Date: &nbsp;</label>
+		<input type="date" class="todaydate" id="submitdate" placeholder="4/12/2016" required><br>
+		<br>
+		<label>Question/Problem: &nbsp;</label>
+		<input type="text" class="submitquestion" id="submitquestion" placeholder="I can't log into my account or access.."><br>
+		<br>
+		<label>More Information: &nbsp;</label>
+		<input type="text" class="moreinfo" id="moreinfo" placeholder="I tried doing this and that..." required><br>
+		<br>
+		
+	</form>
+	<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#submit"> Submit </button>
+	<button type="button" class="btn btn-success resetsubmit"> Reset Fields </button>
+	<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#submit"> Cancel </button>
+
+</div>
+</header>
+</div>
+</template>
