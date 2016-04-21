@@ -12,7 +12,7 @@ Template.training.helpers({
 	},
 
 	GPA: 						function (event, template){
-		var activities 	= actions.find().fetch();
+		var activities 	= actions.find({userID: Meteor.userId()}).fetch();
 
 		var score	= 0;
 		var count 	= 0;
@@ -35,152 +35,180 @@ Template.training.helpers({
 			}
 		}
 
-		if (count > 0){
-			console.log(score, count, score/count);
+		if (count > 0)
 			return (score / count).toFixed(2);
-		}
 
 		return 0;
+	},
+
+	sumCredits: 				function(){
+		var sum 	= 0;
+		var acts 	= actions.find({userID: Meteor.userId()}).fetch();
+
+		for (var i = 0; i < acts.length; i++){
+			sum += acts[i].credits;
+		}
+
+		return sum;
 	}
 });
 
 Template.training.rendered 	= function(){
 
-	var activities 	= [
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-201', credits:  3 , grade:'A', semester:'  ', transfer:  1 },
-		{ userID:'rjweGRAujqTfBhhKS', course:'MGENEX-000', credits:  3 , grade:'*', semester:'  ', transfer:  1 },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MMATH-70', credits:  4 , grade:'A', semester:'  ', transfer:  1 },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-270', credits:  3 , grade:'A', semester:'  ', transfer:  1 },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCMPSC-274', credits:  3 , grade:'A', semester:'  ', transfer:  1 },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-252', credits:  3 , grade:'A', semester:' 2015MFA ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-210', credits:  3 , grade:'A', semester:' 2015MFA ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MART-102', credits:  3 , grade:'B', semester:' 2015MFA ', transfer:  0 },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MGUIDE-110', credits:  0.5 , grade:'P', semester:' 2015MSP ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-253', credits:  3 , grade:'A', semester:' 2015MSP ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-271', credits:  4 , grade:'A', semester:' 2015MSP ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-232', credits:  3 , grade:'A', semester:' 2015MSP ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-221', credits:  3 , grade:'A', semester:' 2015MSP ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MPSYCH-103', credits:  3 , grade:'B', semester:' 2014MFA ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MENGL-103', credits:  3 , grade:'A', semester:' 2014MFA ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-270', credits:  3 , grade:'A', semester:' 2014MFA ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MECON-102', credits:  3 , grade:'B', semester:' 2014MSP ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MENGL-157', credits:  3 , grade:'B', semester:' 2014MSP ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MPSYCH-101', credits:  3 , grade:'A', semester:' 2014MSP ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MHIST-129', credits:  3 , grade:'B', semester:' 2014MSP ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MAGEC-225', credits:  3 , grade:'A', semester:' 2014MSU ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MCHEM-150', credits:  3 , grade:'A', semester:' 2014MSU ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MPSYCH-110', credits:  3 , grade:'A', semester:' 2014MSU ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MART-160', credits:  3 , grade:'A', semester:' 2013MFA ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MHUMAN-110', credits:  3 , grade:'A', semester:' 2013MFA ', transfer: 0  },
-		{ userID:'rjweGRuujqTfBhhKS', course:'MENGL-101', credits:  3 , grade:'A', semester:' 2013MSU ', transfer: 0  },
-	];
+	var userID 	= "rjweGRuujqTfBhhKS";
+
+	if (Meteor.userId() == userID){
+		var activities 	= [
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-201', credits:  3 , grade:'A', semester:'  ', transfer:  1 },
+			{ userID:'rjweGRAujqTfBhhKS', course:'MGENEX-000', credits:  3 , grade:'*', semester:'  ', transfer:  1 },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MMATH-70', credits:  4 , grade:'A', semester:'  ', transfer:  1 },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-270', credits:  3 , grade:'A', semester:'  ', transfer:  1 },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCMPSC-274', credits:  3 , grade:'A', semester:'  ', transfer:  1 },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-252', credits:  3 , grade:'A', semester:' 2015MFA ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-210', credits:  3 , grade:'A', semester:' 2015MFA ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MART-102', credits:  3 , grade:'B', semester:' 2015MFA ', transfer:  0 },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MGUIDE-110', credits:  0.5 , grade:'P', semester:' 2015MSP ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-253', credits:  3 , grade:'A', semester:' 2015MSP ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-271', credits:  4 , grade:'A', semester:' 2015MSP ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-232', credits:  3 , grade:'A', semester:' 2015MSP ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-221', credits:  3 , grade:'A', semester:' 2015MSP ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MPSYCH-103', credits:  3 , grade:'B', semester:' 2014MFA ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MENGL-103', credits:  3 , grade:'A', semester:' 2014MFA ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCSCI-270', credits:  3 , grade:'A', semester:' 2014MFA ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MECON-102', credits:  3 , grade:'B', semester:' 2014MSP ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MENGL-157', credits:  3 , grade:'B', semester:' 2014MSP ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MPSYCH-101', credits:  3 , grade:'A', semester:' 2014MSP ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MHIST-129', credits:  3 , grade:'B', semester:' 2014MSP ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MAGEC-225', credits:  3 , grade:'A', semester:' 2014MSU ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MCHEM-150', credits:  3 , grade:'A', semester:' 2014MSU ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MPSYCH-110', credits:  3 , grade:'A', semester:' 2014MSU ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MART-160', credits:  3 , grade:'A', semester:' 2013MFA ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MHUMAN-110', credits:  3 , grade:'A', semester:' 2013MFA ', transfer: 0  },
+			{ userID:'rjweGRuujqTfBhhKS', course:'MENGL-101', credits:  3 , grade:'A', semester:' 2013MSU ', transfer: 0  },
+		];
 
 
-	var sum 	= 0;
-	var data 	= { labels: [],
-					series: [[]]};
+		var sum 	= 0;
+		var data 	= { labels: [],
+						series: [[], [], []]};
 
-	for (var i = 0; i < activities.length; i++){
-		sum 	+= activities[i].credits;
-		if (data.labels.indexOf(activities[i].semester.trim()) < 0)
-			data.labels.push(activities[i].semester.trim());
+		for (var i = 0; i < activities.length; i++){
+			sum 	+= activities[i].credits;
+			if (data.labels.indexOf(activities[i].semester.trim()) < 0)
+				data.labels.push(activities[i].semester.trim());
+		}
+
+		data.labels.sort();
+
+		for (var i = 0; i < data.labels.length; i++){
+			var value 		= 0;
+			var semester 	= data.labels[i];
+
+			for (var j = 0; j < activities.length; j++){
+				if (activities[j].semester.trim() == semester)
+					value 	+= activities[j].credits;
+			}
+
+			if (i == 0){
+				data.series[1].push(0);
+				data.series[2].push(0);
+				data.series[0].push(value);
+			}
+			else {
+				value += data.series[0][i - 1];
+				data.series[0].push(value);
+				data.series[1].push(data.series[1][i - 1] + 12);
+				data.series[2].push(data.series[2][i - 1] + 15);
+			}
+		}
+
+		var options = { 
+			height: 	'400px'
+		};
+		var chart 	= new Chartist.Line('.ct-chart', data, options);
+
+		var seq 	= 0,
+			delays	= 10,
+			durations 	= 500;
+
+		chart.on('created', function(){
+			seq		= 0;
+		});
+
+		chart.on('draw', function(data){
+			seq ++;
+
+			if (data.type === 'line'){
+				data.element.animate({
+					opacity: {
+						begin: seq * delays + 500,
+						dur: durations,
+						from: 0,
+						to: 1
+					}
+				});
+			}
+
+			else if(data.type === 'label' && data.axis === 'x'){
+				data.element.animate({
+					y: {
+						begin: seq * delays,
+						dur: durations,
+						from: data.y + 100,
+						to: data.y,
+						easing: 'easeOutQuart'
+					}
+				});
+			}
+
+			else if (data.type === 'label' && data.axis === 'y'){
+				data.element.animate({
+					x: {
+						begin: seq * delays,
+						dur: durations,
+						from: data.x - 100,
+						to: data.x,
+						easing: 'easeOutQuart'
+					}
+				});
+			}
+
+			else if (data.type === 'point'){
+				data.element.animate({
+					x1: {
+						begin: seq * delays,
+						dur: durations,
+						from: data.x - 30,
+						to: data.x,
+						easing: 'easeOutQuart'
+					},
+					x2: {
+						begin: seq * delays,
+						dur: durations,
+						from: data.x - 100,
+						to: data.x,
+						easing: 'easeOutQuart'
+					},
+					opacity: {
+						begin: seq * delays,
+						dur: durations,
+						from: 0,
+						to: 1,
+						easing: 'easeOutQuart'
+					}
+				});
+			}
+		});
+
+		chart.on('created', function(){
+			if(window.__exampleAnimateTimeout){
+				clearTimeout(window.__exampleAnimateTimeout);
+				window.__exampleAnimateTimeout = null;
+			}
+		});
 	}
-
-	for (var i = 0; i < data.labels.length; i++){
-		var value 		= 0;
-		var semester 	= data.labels[i];
-
-		for (var j = 0; j < activities.length; j++){
-			if (activities[j].semester.trim() == semester)
-				value 	+= activities[j].credits;
-		}
-
-		value 	= (i == 0) ? value : value + data.series[0][i - 1];
-		data.series[0].push(value);
+	else {
+		console.log(actions.find().fetch());
+		var chart 	= new Chartist.Line('.ct-chart', {labels: ["2016MFA"], series: [[0]]}, {height: '400px'});
 	}
-
-	var options = { height: '400px'};
-	var chart 	= new Chartist.Line('.ct-chart', data, options);
-
-	var seq 	= 0,
-		delays	= 10,
-		durations 	= 500;
-
-	chart.on('created', function(){
-		seq		= 0;
-	});
-
-	chart.on('draw', function(data){
-		seq ++;
-
-		if (data.type === 'line'){
-			data.element.animate({
-				opacity: {
-					begin: seq * delays + 500,
-					dur: durations,
-					from: 0,
-					to: 1
-				}
-			});
-		}
-
-		else if(data.type === 'label' && data.axis === 'x'){
-			data.element.animate({
-				y: {
-					begin: seq * delays,
-					dur: durations,
-					from: data.y + 100,
-					to: data.y,
-					easing: 'easeOutQuart'
-				}
-			});
-		}
-
-		else if (data.type === 'label' && data.axis === 'y'){
-			data.element.animate({
-				x: {
-					begin: seq * delays,
-					dur: durations,
-					from: data.x - 100,
-					to: data.x,
-					easing: 'easeOutQuart'
-				}
-			});
-		}
-
-		else if (data.type === 'point'){
-			data.element.animate({
-				x1: {
-					begin: seq * delays,
-					dur: durations,
-					from: data.x - 30,
-					to: data.x,
-					easing: 'easeOutQuart'
-				},
-				x2: {
-					begin: seq * delays,
-					dur: durations,
-					from: data.x - 50,
-					to: data.x,
-					easing: 'easeOutQuart'
-				},
-				opacity: {
-					begin: seq * delays,
-					dur: durations,
-					from: 0,
-					to: 1,
-					easing: 'easeOutQuart'
-				}
-			});
-		}
-	});
-
-	chart.on('created', function(){
-		if(window.__exampleAnimateTimeout){
-			clearTimeout(window.__exampleAnimateTimeout);
-			window.__exampleAnimateTimeout = null;
-		}
-			
-		//window.__exampleAnimateTimeout = setTimeout(chart.update.bind(chart), 12000);
-	});
 };

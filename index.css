@@ -40,3 +40,7 @@ html, body{
 blockquote {
 	font-size: 		014px;
 }
+
+.scrollable {
+	overflow: 		auto;
+}

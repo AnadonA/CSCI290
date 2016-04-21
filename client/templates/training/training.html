@@ -5,41 +5,34 @@
 		coded into this IF statement to ensure that only personnel who have 
 		successfully logged in can view it. -->
 
-		<div class="row">
+		<div class="row scrollable">
 			<div class="col-sm-4" style="overflow: auto;">
 				<div class="panel panel-success">
-				<div class="panel-heading">
-				<b>GPA</b>
-				<i class="float-right">
-				{{ GPA }}
-				</i>
-				</div>
-				</div>
-				<div class="panel panel-success">
-				<div class="panel-heading">
-				<b> Completed Courses </b>
-				</div>
+					<div class="panel-heading">
+						<b> Unnoficial Transcript </b>
+					</div>
 				</div>
 				<table class="table table-bordered table-striped table-hover">
-					<thead>
+					<thead class="table-bordered">
 						<td class="col-sm-3">
-							Semester
+							<b>Semester</b>
 						</td>
 						<td class="col-sm-3">
-							Course
+							<b>Course</b>
 						</td>
 						<td class="col-sm-2">
-							Units
+							<b>Units</b>
 						</td>
 						<td class="col-sm-2">
-							Grade
+							<b>Grade</b>
 						</td>
 						<td class="col-sm-2">
-							X-Fer
+							<b>X-Fer</b>
 						</td>
 					</thead>
+
 					{{ #each trainingActions }}
-					<tr>
+					<tr class="tblTranscript">
 						<td>{{ semester }}</td>
 						<td>{{ course }}</td>
 						<td>{{ credits }}</td>
@@ -47,6 +40,14 @@
 						<td>{{ transfer }}</td>
 					</tr>
 					{{ /each}}
+
+					<tr class="table-bordered">
+						<td></td>
+						<td></td>
+						<td> Total: {{ sumCredits }}</td>
+						<td> GPA  : {{ GPA }}</td>
+						<td></td>
+					</tr>
 				</table>
 			</div>
 			<div class="col-sm-8">
@@ -58,6 +59,47 @@
 				<div class="col-sm-12">
 					<div class="ct-chart ct-perfect-fourth">
 						{{ createChart }}
+
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<hr>
+
+						<div class="col-sm-6">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									Legend
+								</div>
+
+								<div class="panel-body">
+									<div class="col-sm-12 ctLine1">
+										Your Progress
+									</div>
+									<div class="col-sm-12 ctLine2">
+										Full Time (12 Units)
+									</div>
+									<div class="col-sm-12 ctLine3">
+										Full Time + (15 Units)
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

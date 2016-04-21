@@ -1,0 +1,50 @@
+.ct-chart .ct-series.ct-series-b .ct-line{
+	stroke: 			#5BC0DE;
+	stroke-width: 		004px;
+	stroke-dasharray: 	010px 005px;
+}
+
+.ct-chart .ct-series.ct-series-c .ct-line{
+	stroke: 			#5CB85C;
+	stroke-width: 		004px;
+	stroke-dasharray: 	005px 005px;
+}
+
+.ct-chart .ct-series.ct-series-a .ct-line{
+	stroke: 			#000000;
+	stroke-width: 		005px;
+}
+
+.tblTranscript:hover {
+	font-weight: 		bold;
+
+	color: 				#FFFFFF;
+	background-color: 	#000000;
+
+	cursor: 			pointer;
+}
+
+.tblTranscript td {
+	text-align: 		center;
+}
+
+.ctLine1 {
+	color: 				#FFFFFF;
+	background-color: 	#000000;
+
+	border: 			001px solid #FFFFFF;
+}
+
+.ctLine2 {
+	color:				#000000;
+	background-color: 	#5BC0DE;
+
+	border: 			001px solid #FFFFFF;
+}
+
+.ctLine3 {
+	color: 				#000000;
+	background-color: 	#5CB85C;
+
+	border: 			001px solid #FFFFFF;
+}

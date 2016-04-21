@@ -83,3 +83,22 @@ cd
 ls
 clear
 meteor add email
+sudo apt-get insta;; postfix
+sudo apt-get install postfix
+cd etc
+cd /etc
+ls -a
+vi mailname
+cd
+clear
+cd /etc
+ls -a
+cd /postfix
+cd postfix
+ls -a
+cd /etc
+ls
+vi mailname
+ls -a
+sudo vi mailname
+vi mailname
