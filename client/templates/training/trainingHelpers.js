@@ -9,6 +9,38 @@ Template.training.helpers({
 
 	courseName: 				function(event, template){
 		return courses.findOne({_id: this.course}).Name;
+	},
+
+	GPA: 						function (event, template){
+		var activities 	= actions.find().fetch();
+
+		var score	= 0;
+		var count 	= 0;
+
+		for (var i = 0; i < activities.length; i++){
+			var grades 	= "ABCDF";
+			var grade 	= activities[i].grade.trim();
+
+			if (grades.indexOf(grade) >= 0){
+				count ++;
+				
+				if (grade == "A")
+					score 	+= 4;
+				else if (grade == "B")
+					score 	+= 3;
+				else if (grade == "C")
+					score 	+= 2;
+				else if (grade == "D")
+					score	+= 1;
+			}
+		}
+
+		if (count > 0){
+			console.log(score, count, score/count);
+			return (score / count).toFixed(2);
+		}
+
+		return 0;
 	}
 });
 
