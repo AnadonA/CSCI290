@@ -29,10 +29,10 @@
 {{loadallBadge}}
 -->
 {{#each Announcements}} 
-<div class="well panel-heading collapseSwitch"  title="Click to expand" align="center" data-toggle="collapse" data-target=".{{posted}}">
+<div class="well panel-heading collapseSwitch"  title="Click to expand" align="center" data-toggle="collapse" data-target=".{{title}}">
 {{title}} | Posted: {{posted}}
 </div>
-<div class="panel-body collapse {{posted}}">
+<div class="panel-body collapse {{title}}">
 {{ #each Announcements }}
 <br>
 <hr>

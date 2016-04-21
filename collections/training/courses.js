@@ -153,7 +153,9 @@ courses.allow({
 		return true;
 	},
 
-	
+	remove: 		function(){
+		return true;
+	}
 });
 
 courses.deny({

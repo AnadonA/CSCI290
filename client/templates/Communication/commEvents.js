@@ -37,24 +37,25 @@ Template.CommunicationManageAnnouncements.events({
 	var selectedAnnouce = Session.get('selectedAnnoucement');
 	var finalvar = announcementslist.findOne({_id: new Mongo.ObjectID(selectedAnnouce)});
 	
-	$(".thetitle").val(finalvar.title);
-	$(".thename").val(finalvar.name);
-	$(".startdate").val(finalvar.posted);
-	$(".enddate").val(finalvar.expires);
-	$(".type").val(finalvar.type);
-	$(".info").val(finalvar.information);
+	$("#edittitle").val(finalvar.title);
+	$("#editname").val(finalvar.name);
+	$("#editstartdate").val(finalvar.posted);
+	$("#editenddate").val(finalvar.expires);
+	$("#edittype").val(finalvar.type);
+	$("#editinfo").val(finalvar.information);
 },
 
 'click .updateannoucement': function(event, template){
+	event.preventDefault();
 	var selected = Session.get('selectedAnnoucement');
 	 announcementslist.update({_id: new Mongo.ObjectID(selected)},
 		{$set:{
-		title: $('.thetitle').val(),
-		name: $('.thename').val(),		
-		posted: $('.startdate').val(),
-		expires: $('.enddate').val(),
-		type: $('.type').val(),
-		information: $('.info').val()
+		title: $("#edittitle").val(),
+		name: $("#editname").val(),		
+		posted: $("#editstartdate").val(),
+		expires: $("#editenddate").val(),
+		type: $("#edittype").val(),
+		information: $("#editinfo").val()
 		}},
 	);
 	Session.set("selectedAnnoucement", undefined);

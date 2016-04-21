@@ -25,6 +25,8 @@
   </div>
 </nav>
 <hr>
+<button type="button" class="btn btn-primary sendbtn"> Send </button>
+
 </header>
 </div>
 </template>
@@ -37,7 +39,7 @@
 <h1 align="center"> Manage Announcements</h1>
 <hr>
 <div class="text-center">Click an Announcement to Edit/Remove it, or 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CreateModal" align="center"> Create An Annoucement </button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CreateModal" align="center" id="createanno"> Create An Announcement </button>
 <div class="modal fade" id="CreateModal" role="dialog">
 <div class="modal-dialog">
 
@@ -101,22 +103,22 @@
         <div class="modal-body">
           <form id="editform">
 		<label>Title:</label><br>
-		<input type="text" class="thetitle" id="edittitle" placeholder="Announcement Title" required><br>
+		<input type="text"   id="edittitle" placeholder="Announcement Title" required><br>
 		<br>
 		<label>Name:</label><br>
-		<input type="text" class="thename" id="editname" placeholder="John Doe" required><br>
+		<input type="text"   id="editname" placeholder="John Doe" required><br>
 		<br>
 		<label>Start Date:</label><br>
-		<input type="date" class="startdate" id="editstartdate" placeholder="4/12/2016" required><br>
+		<input type="date"   id="editstartdate" placeholder="4/12/2016" required><br>
 		<br>
 		<label>End Date:</label><br>
-		<input type="date" class="enddate" id="editenddate" placeholder="4/14/2016"><br>
+		<input type="date"  id="editenddate" placeholder="4/14/2016"><br>
 		<br>
 		<label>Type:</label><br>
-		<input type="text" class="type" id="edittype" placeholder="Urgent, Notice" required><br>
+		<input type="text"   id="edittype" placeholder="Urgent, Notice" required><br>
 		<br>
 		<label>Information:</label><br>
-		<input type="text" class="info" id="editinfo" placeholder="This is an announcement to address..." required> <br>
+		<input type="text"  id="editinfo" placeholder="This is an announcement to address..." required> <br>
 		
 	</form>
         </div>

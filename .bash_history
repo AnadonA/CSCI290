@@ -47,3 +47,39 @@ cd
 cd client
 ls
 exit
+ls
+cd home
+cd staging
+cd client
+ls
+cd layouts
+ls
+sd sidebar
+ls
+cd sidebar
+ls
+vi template*
+ls
+cd client
+ls
+cd layouts
+ls
+cd sidebar
+vi templ*
+ls
+vi templ*
+meteor
+clear
+ls
+c
+cd
+ls
+clear
+meteor
+ls
+meteor add email
+ls
+cd
+ls
+clear
+meteor add email

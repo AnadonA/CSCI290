@@ -1,6 +1,7 @@
 Meteor.startup(function(){
-	/* process.env.MAIL_URL = "smtp://postmaster%40sandbox73837475798444269e48095dfd982ff3.mailgun.org:de65df43564f22da3890fd1c731b5766@smtp.mailgun.org:587";
-*/
+
+	process.env.MAIL_URL = "smtp://exophyr:MarriedOn1012@smtp.gmail.com/";
+
 	Meteor.methods({
 
 		/* sendEmail: function(to, subject, text){
@@ -133,6 +134,18 @@ Meteor.startup(function(){
 				{_id: pUserID},
 				{$set: {profile: profile}}
 			);
+		},
+
+		sendEmail2: 				function(pTo, pFrom, pSubject, pText){
+			check([pTo, pFrom, pSubject, pText], [String]);
+
+			this.unblock();
+
+			Email.send({
+				to: pTo,
+				from: pFrom,
+				subject: pSubject,
+				text: pText});
 		}
 	});
 

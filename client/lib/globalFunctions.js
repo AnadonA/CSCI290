@@ -117,4 +117,9 @@ InsertTags 		= function(pTagArray, pTagText){
 				pTagArray.push({text: tags02[j]});
 		}
 	}
+};
+
+GetActions 		= function(){
+	Meteor.subscribe("training.actions", Meteor.userId());
+	return actions.find().fetch();
 }

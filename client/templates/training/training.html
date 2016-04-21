@@ -5,11 +5,49 @@
 		coded into this IF statement to ensure that only personnel who have 
 		successfully logged in can view it. -->
 
-		<div class="col-sm-4">
-		</div>
-		<div class="col-sm-8">
-			<div class="ct-chart ct-perfect-fourth">
-				{{ createChart }}
+		<div class="row">
+			<div class="col-sm-4">
+				<h3> Completed Courses </h3>
+				<table class="table table-bordered table-striped table-hover">
+					<thead>
+						<td class="col-sm-3">
+							Semester
+						</td>
+						<td class="col-sm-3">
+							Course
+						</td>
+						<td class="col-sm-2">
+							Units
+						</td>
+						<td class="col-sm-2">
+							Grade
+						</td>
+						<td class="col-sm-2">
+							X-Fer
+						</td>
+					</thead>
+					{{ #each trainingActions }}
+					<tr>
+						<td>{{ semester }}</td>
+						<td>{{ course }}</td>
+						<td>{{ credits }}</td>
+						<td>{{ grade }}</td>
+						<td>{{ transfer }}</td>
+					</tr>
+					{{ /each}}
+				</table>
+			</div>
+			<div class="col-sm-8">
+				<!--
+				<div class="col-sm-12">
+					{{ > searchable }}
+				</div>
+				-->
+				<div class="col-sm-12">
+					<div class="ct-chart ct-perfect-fourth">
+						{{ createChart }}
+					</div>
+				</div>
 			</div>
 		</div>
 	{{ else }}
